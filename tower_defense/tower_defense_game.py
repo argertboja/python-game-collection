@@ -13,7 +13,8 @@ class TowerDefenseGame:
         self.towers = []
         self.lives = 8
         self.budget = 800
-        self.bg_img = pygame.image.load(os.path.join("imgs", "Game_Map_1.jpg"))
+        self.bg_img = pygame.image.load(os.path.join("tower_defense\imgs", "Game_Map_1.jpg"))
+        self.clicks = [] # to be removed
 
     def run(self):
         run = True
@@ -25,11 +26,19 @@ class TowerDefenseGame:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     run = False
+                # pos = pygame.mouse.get_pos()
 
-                self.draw()
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    # self.clicks.append(pos)
+                    # print(self.clicks)
+                    pass
+
+            self.draw()
 
         pygame.quit()
 
     def draw(self):
         self.win.blit(self.bg_img, (0,0))
+        # for c in self.clicks:
+           # pygame.draw.circle(self.win, (255,0,0), (c[0], c[1]), 5, 0)
         pygame.display.update()
