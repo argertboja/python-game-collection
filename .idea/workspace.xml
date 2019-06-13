@@ -2,10 +2,70 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0fe0665b-556e-4818-8b5f-13c6d992b32e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/tower_defense/enemies/Knight.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tower_defense/enemies/archer_1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tower_defense/enemies/archer_2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tower_defense/enemies/archer_3.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tower_defense/enemies/ninja.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tower_defense/enemies/Enemy.py" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/enemies/Enemy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/Game_Map_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/enemies/Enemy.py" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/enemies/enemy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/enemies/Knight.py" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/enemies/knight.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_1/FantasyArcher_01_walk_0000.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_1/FantasyArcher_01_walk_0000.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_1/FantasyArcher_01_walk_0001.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_1/FantasyArcher_01_walk_0001.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_1/FantasyArcher_01_walk_0002.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_1/FantasyArcher_01_walk_0002.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_1/FantasyArcher_01_walk_0003.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_1/FantasyArcher_01_walk_0003.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_1/FantasyArcher_01_walk_0004.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_1/FantasyArcher_01_walk_0004.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_1/FantasyArcher_01_walk_0005.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_1/FantasyArcher_01_walk_0005.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_1/FantasyArcher_01_walk_0006.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_1/FantasyArcher_01_walk_0006.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_1/FantasyArcher_01_walk_0007.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_1/FantasyArcher_01_walk_0007.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_1/FantasyArcher_01_walk_0008.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_1/FantasyArcher_01_walk_0008.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_1/FantasyArcher_01_walk_0009.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_1/FantasyArcher_01_walk_0009.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_1/FantasyArcher_01_walk_0010.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_1/FantasyArcher_01_walk_0010.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_1/FantasyArcher_01_walk_0011.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_1/FantasyArcher_01_walk_0011.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_1/FantasyArcher_01_walk_0012.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_1/FantasyArcher_01_walk_0012.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_1/FantasyArcher_01_walk_0013.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_1/FantasyArcher_01_walk_0013.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_1/FantasyArcher_01_walk_0014.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_1/FantasyArcher_01_walk_0014.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_2/FantasyArcher_02_walk_0000.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_2/FantasyArcher_02_walk_0000.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_2/FantasyArcher_02_walk_0001.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_2/FantasyArcher_02_walk_0001.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_2/FantasyArcher_02_walk_0002.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_2/FantasyArcher_02_walk_0002.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_2/FantasyArcher_02_walk_0003.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_2/FantasyArcher_02_walk_0003.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_2/FantasyArcher_02_walk_0004.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_2/FantasyArcher_02_walk_0004.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_2/FantasyArcher_02_walk_0005.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_2/FantasyArcher_02_walk_0005.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_2/FantasyArcher_02_walk_0006.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_2/FantasyArcher_02_walk_0006.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_2/FantasyArcher_02_walk_0007.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_2/FantasyArcher_02_walk_0007.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_2/FantasyArcher_02_walk_0008.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_2/FantasyArcher_02_walk_0008.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_2/FantasyArcher_02_walk_0009.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_2/FantasyArcher_02_walk_0009.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_2/FantasyArcher_02_walk_0010.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_2/FantasyArcher_02_walk_0010.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_2/FantasyArcher_02_walk_0011.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_2/FantasyArcher_02_walk_0011.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_2/FantasyArcher_02_walk_0012.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_2/FantasyArcher_02_walk_0012.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_2/FantasyArcher_02_walk_0013.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_2/FantasyArcher_02_walk_0013.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_2/FantasyArcher_02_walk_0014.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_2/FantasyArcher_02_walk_0014.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_3/FantasyArcher_03_walk_0000.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_3/FantasyArcher_03_walk_0000.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_3/FantasyArcher_03_walk_0001.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_3/FantasyArcher_03_walk_0001.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_3/FantasyArcher_03_walk_0002.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_3/FantasyArcher_03_walk_0002.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_3/FantasyArcher_03_walk_0003.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_3/FantasyArcher_03_walk_0003.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_3/FantasyArcher_03_walk_0004.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_3/FantasyArcher_03_walk_0004.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_3/FantasyArcher_03_walk_0005.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_3/FantasyArcher_03_walk_0005.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_3/FantasyArcher_03_walk_0006.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_3/FantasyArcher_03_walk_0006.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_3/FantasyArcher_03_walk_0007.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_3/FantasyArcher_03_walk_0007.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_3/FantasyArcher_03_walk_0008.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_3/FantasyArcher_03_walk_0008.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_3/FantasyArcher_03_walk_0009.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_3/FantasyArcher_03_walk_0009.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_3/FantasyArcher_03_walk_0010.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_3/FantasyArcher_03_walk_0010.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_3/FantasyArcher_03_walk_0011.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_3/FantasyArcher_03_walk_0011.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_3/FantasyArcher_03_walk_0012.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_3/FantasyArcher_03_walk_0012.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_3/FantasyArcher_03_walk_0013.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_3/FantasyArcher_03_walk_0013.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_3/FantasyArcher_03_walk_0014.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/archer_3/FantasyArcher_03_walk_0014.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/ninja/SNinja_nosword_run 01.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/ninja/SNinja_nosword_run 01.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/ninja/SNinja_nosword_run 02.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/ninja/SNinja_nosword_run 02.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/ninja/SNinja_nosword_run 03.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/ninja/SNinja_nosword_run 03.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/ninja/SNinja_nosword_run 04.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/ninja/SNinja_nosword_run 04.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/ninja/SNinja_nosword_run 05.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/ninja/SNinja_nosword_run 05.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/ninja/SNinja_nosword_run 06.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/ninja/SNinja_nosword_run 06.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/ninja/SNinja_nosword_run 07.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/ninja/SNinja_nosword_run 07.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/ninja/SNinja_nosword_run 08.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/ninja/SNinja_nosword_run 08.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/ninja/SNinja_nosword_run 09.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/ninja/SNinja_nosword_run 09.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/ninja/SNinja_nosword_run 10.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/ninja/SNinja_nosword_run 10.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tower_defense/imgs/enemies/ninja/SNinja_nosword_run 11.png" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/imgs/enemies/ninja/SNinja_nosword_run 11.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tower_defense/tower_defense_game.py" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/tower_defense_game.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,12 +76,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tower_defense/tower_defense_game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="42" column="37" selection-start-line="42" selection-start-column="37" selection-end-line="42" selection-end-column="37" />
-              <caret line="39" column="14" lean-forward="true" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
+            <state relative-caret-position="102">
+              <caret line="42" column="32" selection-start-line="42" selection-start-column="32" selection-end-line="42" selection-end-column="32" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -30,34 +89,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tower_defense/enemies/Knight.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="12" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="12" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="32" column="12" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="44" />
+            <state relative-caret-position="175">
+              <caret line="37" column="21" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tower_defense/enemies/Enemy.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tower_defense/enemies/enemy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="96" column="33" selection-start-line="96" selection-start-column="33" selection-end-line="96" selection-end-column="33" />
-              <folding>
-                <element signature="e#0#6#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="187">
+              <caret line="12" column="438" selection-start-line="12" selection-start-column="438" selection-end-line="12" selection-end-column="438" />
             </state>
           </provider>
         </entry>
@@ -80,14 +124,20 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/tower_defense_game.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/tower_defense/enemies/Knight.py" />
         <option value="$PROJECT_DIR$/tower_defense/enemies/Enemy.py" />
+        <option value="$PROJECT_DIR$/tower_defense/enemies/knight.py" />
+        <option value="$PROJECT_DIR$/tower_defense/enemies/archer_3.py" />
+        <option value="$PROJECT_DIR$/tower_defense/enemies/archer_2.py" />
+        <option value="$PROJECT_DIR$/tower_defense/enemies/archer_1.py" />
+        <option value="$PROJECT_DIR$/tower_defense/enemies/ninja.py" />
+        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/tower_defense/tower_defense_game.py" />
+        <option value="$PROJECT_DIR$/tower_defense/enemies/enemy.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="10" />
     <option name="y" value="20" />
     <option name="width" value="1346" />
@@ -112,11 +162,6 @@
             <path>
               <item name="python-game-collection" type="b2602c69:ProjectViewProjectNode" />
               <item name="python-game-collection" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="python-game-collection" type="b2602c69:ProjectViewProjectNode" />
-              <item name="python-game-collection" type="462c0819:PsiDirectoryNode" />
               <item name="tower_defense" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -144,7 +189,7 @@
               <item name="tower_defense" type="462c0819:PsiDirectoryNode" />
               <item name="imgs" type="462c0819:PsiDirectoryNode" />
               <item name="enemies" type="462c0819:PsiDirectoryNode" />
-              <item name="knight" type="462c0819:PsiDirectoryNode" />
+              <item name="archer_3" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -248,7 +293,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24330357" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23660715" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -321,41 +366,77 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/tower_defense/imgs/Game_Map_1.jpg" />
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="32" column="12" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tower_defense/enemies/Knight.py">
+    <entry file="file://$PROJECT_DIR$/tower_defense/enemies/knight.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="9" column="12" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="12" />
+          <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tower_defense/enemies/Enemy.py">
+    <entry file="file://$PROJECT_DIR$/tower_defense/enemies/archer_3.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="96" column="33" selection-start-line="96" selection-start-column="33" selection-end-line="96" selection-end-column="33" />
+        <state relative-caret-position="153">
+          <caret line="11" column="27" lean-forward="true" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
           <folding>
-            <element signature="e#0#6#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tower_defense/enemies/archer_2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="23" lean-forward="true" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tower_defense/enemies/archer_1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="31" lean-forward="true" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tower_defense/enemies/ninja.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="37" column="21" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tower_defense/tower_defense_game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="42" column="37" selection-start-line="42" selection-start-column="37" selection-end-line="42" selection-end-column="37" />
-          <caret line="39" column="14" lean-forward="true" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
+        <state relative-caret-position="102">
+          <caret line="42" column="32" selection-start-line="42" selection-start-column="32" selection-end-line="42" selection-end-column="32" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tower_defense/enemies/enemy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="12" column="438" selection-start-line="12" selection-start-column="438" selection-end-line="12" selection-end-column="438" />
         </state>
       </provider>
     </entry>

@@ -7,6 +7,7 @@ from tower_defense.tower_defense_game import TowerDefenseGame
 
 class Main:
     def __init__(self):
+        pygame.init()
         self.width = 1000
         self.height = 600
         self.win = pygame.display.set_mode((self.width, self.height))
@@ -34,7 +35,7 @@ class Main:
                 if event.type == pygame.MOUSEBUTTONUP:
                     td_game = TowerDefenseGame()
                     td_game.run()
-
+        pygame.init()
         pygame.display.update()
 
 game = Main()
