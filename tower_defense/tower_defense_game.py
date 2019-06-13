@@ -6,6 +6,7 @@ from .enemies.ninja import Ninja
 from .enemies.archer_1 import Archer_1
 from .enemies.archer_2 import Archer_2
 from .enemies.archer_3 import Archer_3
+from .towers.chinese_tower import ChineseTower
 
 
 class TowerDefenseGame:
@@ -15,7 +16,7 @@ class TowerDefenseGame:
         self.height = 700
         self.win = pygame.display.set_mode((self.width, self.height))
         self.enemies = [Knight(), Ninja(), Archer_1(), Archer_2(), Archer_3()]
-        self.towers = []
+        self.towers = [ChineseTower()]
         self.lives = 8
         self.budget = 800
         self.bg_img = pygame.image.load(os.path.join("tower_defense\imgs\maps", "Game_Map_1.jpg"))
@@ -55,5 +56,7 @@ class TowerDefenseGame:
           #  pygame.draw.circle(self.win, (255, 0, 0), (c[0], c[1]), 5, 0)
         for enemy in self.enemies:
             enemy.draw(self.win)
+        for tower in self.towers:
+            tower.draw(self.win)
         pygame.init()
         pygame.display.update()
