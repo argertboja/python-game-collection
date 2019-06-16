@@ -17,7 +17,7 @@ class TowerDefenseGame:
         self.height = 700
         self.win = pygame.display.set_mode((self.width, self.height))
         self.enemies = [Knight(), Ninja(), Archer_1(), Archer_2(), Archer_3()]
-        self.towers = [SpearTower()]
+        self.towers = [SpearTower(50, 50)]
         self.lives = 8
         self.budget = 800
         self.bg_img = pygame.image.load(os.path.join("tower_defense\imgs\maps", "Game_Map_1.jpg"))
@@ -47,6 +47,9 @@ class TowerDefenseGame:
 
             for d in to_del:
                 self.enemies.remove(d)
+
+            for t in self.towers:
+                t.attack(self.enemies)
             self.draw()
 
         pygame.quit()

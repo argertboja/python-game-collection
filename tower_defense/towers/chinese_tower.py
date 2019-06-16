@@ -5,8 +5,8 @@ from .tower import Tower
 
 class ChineseTower(Tower):
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, x, y):
+        super().__init__(x, y)
         self.imgs = []
 
         for x in range(1,8):
