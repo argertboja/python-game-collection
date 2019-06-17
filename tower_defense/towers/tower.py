@@ -1,4 +1,6 @@
 import pygame
+import math
+import time
 
 class Tower:
 
@@ -15,6 +17,7 @@ class Tower:
         self.imgs = []
         self.img = None
         self.animation_count = 0
+        self.timer = time.time()
 
     def click(self, x_pos, y_pos):
         """
@@ -59,3 +62,36 @@ class Tower:
         """
         self.x = x
         self.y = y
+
+    def attack(self, enemies, range, inRange):
+        """
+        Decides whether the tower should start attacking
+        :param enemies: list of enemies
+        :return: None
+        """
+        self.in_range = False
+        closest_enemies = []
+        for enemy in enemies:
+            dis = math.sqrt((self.x - enemy.x)**2 + (self.y - enemy.y)**2)
+            if dis < self.range:
+                self.in_range = True
+                closest_enemies.append(enemy)
+
+        closest_enemies.sort(key=lambda x: x.x)
+        if len(closest_enemies) > 0:
+            closest_enemy = closest_enemies[0]
+            if time.time() - self.timer >= 0.5:
+                self.timer = time.time()
+                if closest_enemy.hit():
+                    enemies.remove(closest_enemy)
+            """
+            This piece of code is used for archer towers in order to flip the archer
+            if closest_enemy.x > self.x and not (self.flipped):
+                self.flipped = True
+                for x, img in enumerate(self.imgs):
+                    self.imgs[x] = pygame.transform.flip(img, True, False)
+            elif closest_enemy.x < self.x and self.flipped:
+                self.flipped = False
+                for x, img in enumerate(self.imgs):
+                    self.imgs[x] = pygame.transform.flip(img, True, False)
+            """

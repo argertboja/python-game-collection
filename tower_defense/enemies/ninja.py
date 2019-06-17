@@ -8,6 +8,8 @@ class Ninja(Enemy):
         super().__init__()
         # imgs = [pygame.image.load(os.path.join("tower_defense\imgs\enemies\knight", "Knight_walk_0" + str(x) + ".png") for x in range(7))]
         self.imgs = []
+        self.max_health = 5
+        self.health = self.max_health
 
         for x in range(1, 12):
             str_to_add = str(x)

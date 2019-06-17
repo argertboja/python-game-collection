@@ -11,6 +11,7 @@ class SpearTower(Tower):
         self.imgs = []
         self. range = 300
         self.in_range = False
+        self.flipped = False
 
         for x in range(1,18):
             if self.level == 1:
@@ -35,11 +36,7 @@ class SpearTower(Tower):
         self.range = new_range
 
     def attack(self, enemies):
-        self.in_range = False
-        for enemy in enemies:
-            dis = math.sqrt((self.x - enemy.x)**2 + (self.y - enemy.y)**2)
-            if dis < self.range:
-                self.in_range = True
+        super().attack(enemies, self.range, self.in_range)
 
     def draw(self, win):
         self.img = self.imgs[self.animation_count // 4]
