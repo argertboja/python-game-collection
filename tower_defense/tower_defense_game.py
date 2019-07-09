@@ -10,6 +10,7 @@ from .enemies.archer_2 import Archer_2
 from .enemies.archer_3 import Archer_3
 from .towers.chinese_tower import ChineseTower
 from .towers.spear_tower import SpearTower
+from .towers.archer_tower import ArcherTower
 
 
 class TowerDefenseGame:
@@ -19,7 +20,7 @@ class TowerDefenseGame:
         self.height = 700
         self.win = pygame.display.set_mode((self.width, self.height))
         self.enemies = []
-        self.towers = [SpearTower(80, 300)]
+        self.towers = [SpearTower(80, 300), ArcherTower(300, 300)]
         self.lives = 8
         self.budget = 800
         self.bg_img = pygame.image.load(os.path.join("tower_defense\imgs\maps", "Game_Map_1.jpg"))

@@ -73,7 +73,7 @@ class Tower:
         self.in_range = False
         closest_enemies = []
         for enemy in enemies:
-            dis = math.sqrt((self.x - enemy.x)**2 + (self.y - enemy.y)**2)
+            dis = math.sqrt((int(self.x + (self.img.get_width() / 2)) - enemy.x)**2 + (int(self.y + (self.img.get_height() / 2)) - enemy.y)**2)
             if dis < self.range:
                 self.in_range = True
                 closest_enemies.append(enemy)
