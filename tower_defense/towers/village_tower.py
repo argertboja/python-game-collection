@@ -4,28 +4,28 @@ import math
 
 from .tower import Tower
 
-class SpearTower(Tower):
+class VillageTower(Tower):
 
     def __init__(self, x, y):
         super().__init__(x, y)
         self.imgs = []
-        self. range = 200
+        self. range = 100
         self.in_range = False
         self.flipped = False
 
-        for x in range(1,18):
+        for x in range(1,7):
             if self.level == 1:
                 self.imgs.append(pygame.transform.scale(
-                    pygame.image.load(os.path.join("tower_defense\imgs\\towers\\tower1_level1","t" + str(x) + ".png")),
-                    (88, 176)))
+                    pygame.image.load(os.path.join("tower_defense\imgs\\towers\\tower3_level1","" + str(x) + ".png")),
+                    (169, 199)))
             elif self.level == 2:
                 self.imgs.append(pygame.transform.scale(
-                    pygame.image.load(os.path.join("tower_defense\imgs\\towers\\tower1_level2", "t" + str(x) + ".png")),
-                    (88, 176)))
+                    pygame.image.load(os.path.join("tower_defense\imgs\\towers\\tower3_level2", "" + str(x) + ".png")),
+                    (169, 199)))
             elif self.level == 3:
                 self.imgs.append(pygame.transform.scale(
-                    pygame.image.load(os.path.join("tower_defense\imgs\\towers\\tower1_level3", "t" + str(x) + ".png")),
-                    (88, 176)))
+                    pygame.image.load(os.path.join("tower_defense\imgs\\towers\\tower3_level3", "" + str(x) + ".png")),
+                    (169, 199)))
 
     def change_range(self, new_range):
         """
