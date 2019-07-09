@@ -1,8 +1,8 @@
 import pygame
 import math
 
-class Enemy:
 
+class Enemy:
     def __init__(self):
         self.width = 148
         self.height = 148
@@ -21,6 +21,8 @@ class Enemy:
         self.move_count = 0
         self.imgs = []
         self.flipped = False
+        self.id = 1
+        self.direction_vector = (0,0)
 
     def draw(self, win):
         """
@@ -75,41 +77,40 @@ class Enemy:
         path = self.path1
 
 
-        x1, y1 = path[self.path_pos]
+        self.x1, self.y1 = path[self.path_pos]
 
         if self.path_pos + 1 >= len(path):
-            self.x2, y2 = (-20, 6)
+            self.x2, self.y2 = (-20, 6)
         else:
-            self.x2, y2 = path[self.path_pos + 1]
+            self.x2, self.y2 = path[self.path_pos + 1]
 
-        direction_vector = ((self.x2-x1)*2, (y2-y1)*2)
-        length = math.sqrt((direction_vector[0])**2 + (direction_vector[1])**2)
-        direction_vector = (direction_vector[0]/length, direction_vector[1]/length)
+        self.direction_vector = ((self.x2-self.x1)*2, (self.y2-self.y1)*2)
+        length = math.sqrt((self.direction_vector[0])**2 + (self.direction_vector[1])**2)
+        self.direction_vector = (self.direction_vector[0]/length, self.direction_vector[1]/length)
 
-        if direction_vector[0] < 0 and not(self.flipped):
+        if self.direction_vector[0] < 0 and not(self.flipped):
             self.flipped = True
             for x, img in enumerate(self.imgs):
                 self.imgs[x] = pygame.transform.flip(img, True, False)
 
-        move_x, move_y = (self.x + direction_vector[0], self.y + direction_vector[1])
+        move_x, move_y = (self.x + self.direction_vector[0], self.y + self.direction_vector[1])
 
         self.x = move_x
         self.y = move_y
-        print(self.x)
 
-        if direction_vector[0] >= 0:
-            if direction_vector[1] >= 0:
-                if self.x >= self.x2 and self.y >= y2:
+        if self.direction_vector[0] >= 0:
+            if self.direction_vector[1] >= 0:
+                if self.x >= self.x2 and self.y >= self.y2:
                     self.path_pos += 1
             else:
-                if self.x >= self.x2 and self.y <= y2:
+                if self.x >= self.x2 and self.y <= self.y2:
                     self.path_pos += 1
         else:
-            if direction_vector[1] >= 0:
-                if self.x <= self.x2 and self.y >= y2:
+            if self.direction_vector[1] >= 0:
+                if self.x <= self.x2 and self.y >= self.y2:
                     self.path_pos += 1
             else:
-                if self.x <= self.x2 and self.y <= y2:
+                if self.x <= self.x2 and self.y <= self.y2:
                     self.path_pos += 1
 
     def hit(self):

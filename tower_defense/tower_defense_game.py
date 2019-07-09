@@ -1,4 +1,6 @@
 import os
+import time
+import random
 
 import pygame
 from .enemies.knight import Knight
@@ -16,12 +18,13 @@ class TowerDefenseGame:
         self.width = 1000
         self.height = 700
         self.win = pygame.display.set_mode((self.width, self.height))
-        self.enemies = [Ninja()]
-        self.towers = [SpearTower(50, 50), SpearTower(500, 250)]
+        self.enemies = []
+        self.towers = [SpearTower(80, 300)]
         self.lives = 8
         self.budget = 800
         self.bg_img = pygame.image.load(os.path.join("tower_defense\imgs\maps", "Game_Map_1.jpg"))
         self.clicks = [] # to be removed
+        self.timer = time.time()
 
     def run(self):
         run = True
@@ -29,7 +32,12 @@ class TowerDefenseGame:
         clock = pygame.time.Clock()
 
         while run:
+            if time.time() - self.timer >= random.randrange(1,5):
+                self.timer = time.time()
+                self.enemies.append(random.choice([Archer_1(), Archer_2(), Archer_3(), Ninja(), Knight()]))
+
             clock.tick(60)
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     run = False

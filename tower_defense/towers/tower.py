@@ -18,6 +18,7 @@ class Tower:
         self.img = None
         self.animation_count = 0
         self.timer = time.time()
+        self.damage = 1
 
     def click(self, x_pos, y_pos):
         """
