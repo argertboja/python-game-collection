@@ -12,6 +12,7 @@ class ArcherTower(Tower):
         self. range = 100
         self.in_range = False
         self.flipped = False
+        self.damage = 2
 
         for x in range(1,7):
             if self.level == 1:
@@ -36,7 +37,7 @@ class ArcherTower(Tower):
         self.range = new_range
 
     def attack(self, enemies):
-        super().attack(enemies, self.range, self.in_range)
+        super().attack(enemies, self.range, self.in_range, self.damage)
 
     def draw(self, win):
         self.img = self.imgs[self.animation_count // 4]

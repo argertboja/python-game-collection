@@ -45,6 +45,9 @@ class Enemy:
         health_bar_length = 50
         move_by = round(health_bar_length / self.max_health)
         health_bar = move_by * self.health
+        print("max health: " + str(self.max_health))
+        print("move_by " + str(move_by))
+        print("health " + str(health_bar))
 
         pygame.draw.rect(win, (255, 0, 0), (self.x - 35, self.y - 58, health_bar_length,10) , 0)
         pygame.draw.rect(win, (0, 255, 0), (self.x - 35, self.y - 58, health_bar, 10), 0)
@@ -113,12 +116,12 @@ class Enemy:
                 if self.x <= self.x2 and self.y <= self.y2:
                     self.path_pos += 1
 
-    def hit(self):
+    def hit(self, damage):
         """
         Remove enemy health by 1 and return true if enemy is dead
         :return: bool
         """
-        self.health -= 1
+        self.health -= damage
         if self.health <= 0:
             return True
         return False

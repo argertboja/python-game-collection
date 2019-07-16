@@ -64,7 +64,7 @@ class Tower:
         self.x = x
         self.y = y
 
-    def attack(self, enemies, range, inRange):
+    def attack(self, enemies, range, inRange, damage):
         """
         Decides whether the tower should start attacking
         :param enemies: list of enemies
@@ -83,7 +83,7 @@ class Tower:
             closest_enemy = closest_enemies[0]
             if time.time() - self.timer >= 0.5:
                 self.timer = time.time()
-                if closest_enemy.hit():
+                if closest_enemy.hit(damage):
                     enemies.remove(closest_enemy)
             """
             This piece of code is used for archer towers in order to flip the archer

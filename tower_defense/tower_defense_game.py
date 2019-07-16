@@ -3,6 +3,7 @@ import time
 import random
 
 import pygame
+pygame.font.init()
 from .enemies.knight import Knight
 from .enemies.ninja import Ninja
 from .enemies.archer_1 import Archer_1
@@ -25,8 +26,15 @@ class TowerDefenseGame:
         self.lives = 8
         self.budget = 800
         self.bg_img = pygame.image.load(os.path.join("tower_defense\imgs\maps", "Game_Map_1.jpg"))
+        self.heart_img = None
+        self.heart_imgs = []
+        self.heart_animation_count = 0
+        for x in range(1,30):
+            self.heart_imgs.append(
+                pygame.image.load(os.path.join("tower_defense\imgs\icons\heart", "Layer " + str(x) + ".png")))
         self.clicks = [] # to be removed
         self.timer = time.time()
+        self.font = pygame.font.SysFont("comicsans", 60)
 
     def run(self):
         run = True
@@ -37,7 +45,7 @@ class TowerDefenseGame:
             if time.time() - self.timer >= random.randrange(1,5):
                 self.timer = time.time()
                 self.enemies.append(random.choice([Archer_1(), Archer_2(), Archer_3(), Ninja(), Knight()]))
-
+                #self.enemies.append(Archer_1())
             clock.tick(60)
 
             for event in pygame.event.get():
@@ -57,9 +65,15 @@ class TowerDefenseGame:
 
             for d in to_del:
                 self.enemies.remove(d)
+                self.lives -= 1
+                if self.lives <= 0:
+                    print("You lost!")
+                    run = False
 
             for t in self.towers:
                 t.attack(self.enemies)
+
+
             self.draw()
 
         pygame.quit()
@@ -72,5 +86,17 @@ class TowerDefenseGame:
             enemy.draw(self.win)
         for tower in self.towers:
             tower.draw(self.win)
+        text = self.font.render(str(self.lives), 1, (255,255,255))
+        self.win.blit(text, (self.width-90, 10))
+        self.draw_heart()
         pygame.init()
         pygame.display.update()
+
+    def draw_heart(self):
+        self.heart_img = self.heart_imgs[self.heart_animation_count // 4]
+        self.heart_animation_count += 1
+
+        if self.heart_animation_count >= len(self.heart_imgs) * 4:
+            self.heart_animation_count = 0
+
+        self.win.blit(self.heart_img, (self.width-60, 5))
