@@ -31,10 +31,10 @@ class Enemy:
          :return: none
         """
 
-        self.img = self.imgs[self.animation_count//4]
+        self.img = self.imgs[self.animation_count//5]
         self.animation_count += 1
 
-        if self.animation_count >= len(self.imgs)*4:
+        if self.animation_count >= len(self.imgs)*5:
             self.animation_count = 0
 
         win.blit(self.img, (self.x - self.img.get_width()/2 - 10, self.y - (self.img.get_height()/2+15)))

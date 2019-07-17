@@ -48,7 +48,7 @@ class TowerDefenseGame:
                 self.timer = time.time()
                 self.enemies.append(random.choice([Archer_1(), Archer_2(), Archer_3(), Ninja(), Knight()]))
                 #self.enemies.append(Archer_1())
-            clock.tick(60)
+            clock.tick(120)
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:

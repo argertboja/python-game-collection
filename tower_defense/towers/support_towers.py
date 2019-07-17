@@ -26,6 +26,7 @@ class RangeTower(Tower):
         self.range = 100
         self.img = None
 
+
     def draw(self, win):
         self.img = imgs[self.id-1][self.level-1]
 
@@ -37,20 +38,14 @@ class RangeTower(Tower):
         int(self.x + (self.img.get_width() / 2) - self.range), int(self.y + (self.img.get_height() / 2) - self.range)))
         win.blit(self.img, (self.x, self.y))
 
+        print("tower x = " + str(self.x))
+
     def increase_range(self, towers):
         for t in towers:
-            print("tower x = " + str(t.x))
             dis = math.sqrt((int(self.x ) - t.x) ** 2 + (
                         int(self.y ) - t.y) ** 2)
 
-            effected_towers = []
-
-            print("tower id: " + str(t.id) + "support id = " + str(self.id) + " dis = " + str(dis))
-
-            if dis <= self.range and t.id == self.id:
-                effected_towers.append(t)
-
-            for e in effected_towers:
-                e.range = e.original_range + round(e.range * self.ranges[self.level - 1])
+            if dis <= (self.range + self.width / 2) and t.id == self.id:
+                t.range = t.original_range + round(t.range * self.ranges[self.level - 1])
 
 

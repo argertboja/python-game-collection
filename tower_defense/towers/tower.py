@@ -7,8 +7,8 @@ class Tower:
     def __init__(self, x, y):
         self.x = x
         self.y = y
-        self.width = 0
-        self.height = 0
+        self.width = 50
+        self.height = 50
         self.buy_costs = [0,0,0]
         self.upgrade_price = [0,0,0]
         self.level = 2
