@@ -13,6 +13,7 @@ from .towers.chinese_tower import ChineseTower
 from .towers.spear_tower import SpearTower
 from .towers.archer_tower import ArcherTower
 from .towers.village_tower import VillageTower
+from .towers.support_towers import RangeTower
 
 
 class TowerDefenseGame:
@@ -22,7 +23,8 @@ class TowerDefenseGame:
         self.height = 700
         self.win = pygame.display.set_mode((self.width, self.height))
         self.enemies = []
-        self.towers = [SpearTower(80, 300), ArcherTower(300, 300), VillageTower(500, 300)]
+        self.towers = [SpearTower(80, 300), SpearTower(250, 300), ArcherTower(300, 300), VillageTower(500, 300)]
+        self.support_towers = [RangeTower(140, 380)]
         self.lives = 8
         self.budget = 800
         self.bg_img = pygame.image.load(os.path.join("tower_defense\imgs\maps", "Game_Map_1.jpg"))
@@ -73,6 +75,9 @@ class TowerDefenseGame:
             for t in self.towers:
                 t.attack(self.enemies)
 
+            for st in self.support_towers:
+                st.increase_range(self.towers)
+
 
             self.draw()
 
@@ -86,6 +91,8 @@ class TowerDefenseGame:
             enemy.draw(self.win)
         for tower in self.towers:
             tower.draw(self.win)
+        for st in self.support_towers:
+            st.draw(self.win)
         text = self.font.render(str(self.lives), 1, (255,255,255))
         self.win.blit(text, (self.width-90, 10))
         self.draw_heart()
