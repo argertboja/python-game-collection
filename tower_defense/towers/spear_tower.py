@@ -57,6 +57,8 @@ class SpearTower(Tower):
         pygame.draw.circle(surface, (120, 120, 120, 100),
                            (self.range, self.range),
                            self.range, self.range)
-        win.blit(surface, (
+
+        if self.selected:
+            win.blit(surface, (
         int(self.x + (self.img.get_width() / 2) - self.range), int(self.y + (self.img.get_height() / 2) - self.range)))
         win.blit(self.img, (self.x, self.y))

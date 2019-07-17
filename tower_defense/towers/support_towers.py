@@ -28,17 +28,17 @@ class RangeTower(Tower):
 
 
     def draw(self, win):
+
         self.img = imgs[self.id-1][self.level-1]
 
         surface = pygame.Surface((self.range * 4, self.range * 4), pygame.SRCALPHA, 32)
         pygame.draw.circle(surface, (120, 120, 120, 100),
                            (self.range, self.range),
                            self.range, self.range)
-        win.blit(surface, (
+        if self.selected:
+            win.blit(surface, (
         int(self.x + (self.img.get_width() / 2) - self.range), int(self.y + (self.img.get_height() / 2) - self.range)))
         win.blit(self.img, (self.x, self.y))
-
-        print("tower x = " + str(self.x))
 
     def increase_range(self, towers):
         for t in towers:

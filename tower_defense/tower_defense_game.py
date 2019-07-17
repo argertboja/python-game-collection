@@ -37,6 +37,7 @@ class TowerDefenseGame:
         self.clicks = [] # to be removed
         self.timer = time.time()
         self.font = pygame.font.SysFont("comicsans", 60)
+        self.selected_tower = None
 
     def run(self):
         run = True
@@ -53,12 +54,23 @@ class TowerDefenseGame:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     run = False
-                # pos = pygame.mouse.get_pos()
+                pos = pygame.mouse.get_pos()
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     # self.clicks.append(pos)
                     # print(self.clicks)
-                    pass
+                    for t in self.towers:
+                        if t.click(pos[0], pos[1]):
+                            t.selected = True
+                            self.selected_tower = t
+                        else:
+                            t.selected = False
+                    for t in self.support_towers:
+                        if t.click(pos[0], pos[1]):
+                            t.selected = True
+                            self.selected_tower = t
+                        else:
+                            t.selected = False
             to_del = []
 
             for enemy in self.enemies:
