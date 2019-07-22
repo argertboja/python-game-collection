@@ -1,7 +1,6 @@
 import pygame
 import os
 import math
-
 from .tower import Tower
 
 class ArcherTower(Tower):
@@ -60,4 +59,6 @@ class ArcherTower(Tower):
                            self.range, self.range)
         if self.selected:
             win.blit(surface, (int(self.x + (self.img.get_width() / 2) - self.range), int(self.y + (self.img.get_height() / 2) - self.range)))
+            self.menu.set_position(self.x, self.y + 165 )
+            self.menu.draw(win)
         win.blit(self.img, (self.x, self.y))

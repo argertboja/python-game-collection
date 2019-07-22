@@ -1,6 +1,10 @@
 import pygame
 import math
 import time
+import os
+from tower_defense.menu.menu import Menu
+
+menu_bg = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "bg.png")),(125, 50))
 
 class Tower:
 
@@ -13,7 +17,7 @@ class Tower:
         self.upgrade_price = [0,0,0]
         self.level = 2
         self.selected = False
-        self.menu = None
+        self.menu = Menu(self.x, self.y, menu_bg)
         self.imgs = []
         self.img = None
         self.animation_count = 0
@@ -28,7 +32,6 @@ class Tower:
         :param y_pos: int
         :return: bool
         """
-        print("x = " + str(x_pos) + " y = " + str(y_pos))
         if x_pos >= self.x and x_pos <= (self.x + self.img.get_width()):
             if y_pos >= self.y and y_pos <= (self.y + self.img.get_height()):
                 return True

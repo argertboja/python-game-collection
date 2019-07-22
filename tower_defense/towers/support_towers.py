@@ -1,7 +1,9 @@
 import pygame
 import os
 import math
+from tower_defense.menu.menu import Menu
 
+menu_bg = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "bg.png")),(125, 50))
 from .tower import Tower
 
 imgs = [[pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\\towers\support_towers", "tower1_level1_damage.png")), (80, 80)),
@@ -38,6 +40,8 @@ class RangeTower(Tower):
         if self.selected:
             win.blit(surface, (
         int(self.x + (self.img.get_width() / 2) - self.range), int(self.y + (self.img.get_height() / 2) - self.range)))
+            self.menu.set_position(self.x - 20, self.y + 120)
+            self.menu.draw(win)
         win.blit(self.img, (self.x, self.y))
 
     def increase_range(self, towers):

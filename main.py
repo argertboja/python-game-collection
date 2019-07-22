@@ -4,12 +4,16 @@ import pygame
 
 from tower_defense.tower_defense_game import TowerDefenseGame
 
+icon = pygame.transform.scale(pygame.image.load(os.path.join("images", "icon.png")),(32,32))
+
 
 class Main:
     def __init__(self):
         pygame.init()
         self.width = 1000
         self.height = 600
+        os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (100,100)
+        pygame.display.set_icon(icon)
         self.win = pygame.display.set_mode((self.width, self.height))
         self.bg = pygame.image.load(os.path.join("images", "bg.jpg"))
         self.td1 = pygame.image.load(os.path.join("images", "td1.png"))

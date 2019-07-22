@@ -20,7 +20,7 @@ class TowerDefenseGame:
 
     def __init__(self):
         self.width = 1000
-        self.height = 700
+        self.height = 600
         self.win = pygame.display.set_mode((self.width, self.height))
         self.enemies = []
         self.towers = [SpearTower(80, 300), SpearTower(250, 300), ArcherTower(300, 300), VillageTower(500, 300)]

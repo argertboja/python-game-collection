@@ -1,7 +1,9 @@
 import pygame
 import os
 import math
+from tower_defense.menu.menu import Menu
 
+menu_bg = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "bg.png")),(125, 50))
 from .tower import Tower
 
 class VillageTower(Tower):
@@ -59,4 +61,6 @@ class VillageTower(Tower):
         if self.selected:
             win.blit(surface, (int(self.x + (self.img.get_width() / 2) - self.range), int(self.y + (self.img.get_height() / 2) - self.range)))
         #pygame.draw.circle(win, (255,0,0), (int(self.x + (self.img.get_width() / 2)), int(self.y + (self.img.get_height() / 2))), self.range, 1)
+            self.menu.set_position(self.x - 10, self.y + 175)
+            self.menu.draw(win)
         win.blit(self.img, (self.x, self.y))

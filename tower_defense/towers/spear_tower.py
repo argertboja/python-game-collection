@@ -16,6 +16,7 @@ class SpearTower(Tower):
         self.id = 3
         self.original_range = self.range
 
+
         for x in range(1,18):
             if self.level == 1:
                 self.imgs.append(pygame.transform.scale(
@@ -61,4 +62,6 @@ class SpearTower(Tower):
         if self.selected:
             win.blit(surface, (
         int(self.x + (self.img.get_width() / 2) - self.range), int(self.y + (self.img.get_height() / 2) - self.range)))
+            self.menu.set_position(self.x - 20, self.y + 196)
+            self.menu.draw(win)
         win.blit(self.img, (self.x, self.y))
