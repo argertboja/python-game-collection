@@ -29,6 +29,7 @@ class RangeTower(Tower):
         self.range = 100
         self.img = None
         self.menu.set_position(self.x - 15, self.y + 120)
+        self.menu.set_cost([1000, 3000, 5000])
         self.menu.add_button(upgrade_img, "Upgrade")
         self.menu.add_button(sell_img, "Sell")
 
@@ -55,4 +56,5 @@ class RangeTower(Tower):
             if dis <= (self.range + self.width / 2) and t.id == self.id:
                 t.range = t.original_range + round(t.range * self.ranges[self.level - 1])
 
-
+    def upgrade(self):
+        self.level += 1

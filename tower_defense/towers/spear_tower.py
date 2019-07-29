@@ -4,6 +4,8 @@ import math
 
 upgrade_img = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "upgrade.png")),(32, 32))
 sell_img = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "sell.png")),(32, 32))
+star_img = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "star.png")),(16, 16))
+
 from .tower import Tower
 
 class SpearTower(Tower):
@@ -11,6 +13,9 @@ class SpearTower(Tower):
     def __init__(self, x, y):
         super().__init__(x, y)
         self.imgs = []
+        self.imgs_level1 = []
+        self.imgs_level2 = []
+        self.imgs_level3 = []
         self.range = 150
         self.in_range = False
         self.flipped = False
@@ -18,23 +23,28 @@ class SpearTower(Tower):
         self.id = 3
         self.original_range = self.range
         self.menu.set_position(self.x - 20, self.y + 200)
+        self.menu.set_cost([5000, 10000, 20000])
         self.menu.add_button(upgrade_img, "Upgrade")
         self.menu.add_button(sell_img, "Sell")
 
 
         for x in range(1,18):
-            if self.level == 1:
-                self.imgs.append(pygame.transform.scale(
-                    pygame.image.load(os.path.join("tower_defense\imgs\\towers\\tower1_level1","t" + str(x) + ".png")),
-                    (78, 156)))
-            elif self.level == 2:
-                self.imgs.append(pygame.transform.scale(
-                    pygame.image.load(os.path.join("tower_defense\imgs\\towers\\tower1_level2", "t" + str(x) + ".png")),
-                    (78, 156)))
-            elif self.level == 3:
-                self.imgs.append(pygame.transform.scale(
-                    pygame.image.load(os.path.join("tower_defense\imgs\\towers\\tower1_level3", "t" + str(x) + ".png")),
-                    (78, 156)))
+            self.imgs_level1.append(pygame.transform.scale(
+                pygame.image.load(os.path.join("tower_defense\imgs\\towers\\tower1_level1","t" + str(x) + ".png")),
+                (78, 156)))
+            self.imgs_level2.append(pygame.transform.scale(
+                pygame.image.load(os.path.join("tower_defense\imgs\\towers\\tower1_level2", "t" + str(x) + ".png")),
+                (78, 156)))
+            self.imgs_level3.append(pygame.transform.scale(
+                pygame.image.load(os.path.join("tower_defense\imgs\\towers\\tower1_level3", "t" + str(x) + ".png")),
+                (78, 156)))
+
+        if self.level == 1:
+            self.imgs = self.imgs_level1
+        elif self.level == 2:
+            self.imgs = self.imgs_level2
+        elif self.level == 3:
+            self.imgs = self.imgs_level3
 
     def change_range(self, new_range):
         """
@@ -69,3 +79,10 @@ class SpearTower(Tower):
         int(self.x + (self.img.get_width() / 2) - self.range), int(self.y + (self.img.get_height() / 2) - self.range)))
             self.menu.draw(win)
         win.blit(self.img, (self.x, self.y))
+
+    def upgrade(self):
+        self.level += 1
+        if self.level == 2:
+            self.imgs = self.imgs_level2
+        elif self.level == 3:
+            self.imgs = self.imgs_level3

@@ -11,6 +11,9 @@ class ArcherTower(Tower):
     def __init__(self, x, y):
         super().__init__(x, y)
         self.imgs = []
+        self.imgs_level1 = []
+        self.imgs_level2 = []
+        self.imgs_level3 = []
         self.range = 100
         self.in_range = False
         self.flipped = False
@@ -18,22 +21,27 @@ class ArcherTower(Tower):
         self.id = 2
         self.original_range = self.range
         self.menu.set_position(self.x, self.y + 165)
+        self.menu.set_cost([4000, 8000, 12000])
         self.menu.add_button(upgrade_img, "Upgrade")
         self.menu.add_button(sell_img, "Sell")
 
         for x in range(1,7):
-            if self.level == 1:
-                self.imgs.append(pygame.transform.scale(
+            self.imgs_level1.append(pygame.transform.scale(
                     pygame.image.load(os.path.join("tower_defense\imgs\\towers\\tower2_level1","" + str(x) + ".png")),
                     (120, 141)))
-            elif self.level == 2:
-                self.imgs.append(pygame.transform.scale(
+            self.imgs_level2.append(pygame.transform.scale(
                     pygame.image.load(os.path.join("tower_defense\imgs\\towers\\tower2_level2", "" + str(x) + ".png")),
                     (120, 141)))
-            elif self.level == 3:
-                self.imgs.append(pygame.transform.scale(
+            self.imgs_level3.append(pygame.transform.scale(
                     pygame.image.load(os.path.join("tower_defense\imgs\\towers\\tower2_level3", "" + str(x) + ".png")),
                     (120, 141)))
+
+        if self.level == 1:
+            self.imgs = self.imgs_level1
+        elif self.level == 2:
+            self.imgs = self.imgs_level2
+        elif self.level == 3:
+            self.imgs = self.imgs_level3
 
     def change_range(self, new_range):
         """
@@ -68,3 +76,11 @@ class ArcherTower(Tower):
 
             self.menu.draw(win)
         win.blit(self.img, (self.x, self.y))
+
+
+    def upgrade(self):
+        self.level += 1
+        if self.level == 2:
+            self.imgs = self.imgs_level2
+        elif self.level == 3:
+            self.imgs = self.imgs_level3

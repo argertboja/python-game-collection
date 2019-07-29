@@ -4,7 +4,7 @@ import time
 import os
 from tower_defense.menu.menu import Menu
 
-menu_bg = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "bg.png")),(125, 50))
+menu_bg = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "bg.png")),(160, 50))
 
 class Tower:
 
@@ -15,9 +15,9 @@ class Tower:
         self.height = 50
         self.buy_costs = [0,0,0]
         self.upgrade_price = [0,0,0]
-        self.level = 2
+        self.level = 1
         self.selected = False
-        self.menu = Menu(self.x, self.y, menu_bg)
+        self.menu = Menu(self, self.x, self.y, menu_bg, [])
         self.imgs = []
         self.img = None
         self.animation_count = 0
@@ -45,12 +45,6 @@ class Tower:
         """
         return self.buy_costs[self.level-1]
 
-    def upgrade(self):
-        """
-        Upgrades the level of tower
-        :return: None
-        """
-        self.level += 1
 
     def get_uprade_cost(self):
         """

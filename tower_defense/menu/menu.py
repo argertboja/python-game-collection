@@ -1,6 +1,8 @@
 import pygame
 import os
 
+star_img = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "star.png")),(16, 16))
+
 class Button:
     def __init__(self, x, y, img, name):
         self.name = name
@@ -12,6 +14,7 @@ class Button:
 
     def draw(self, win):
         win.blit(self.img, (self.x, self.y))
+        win.blit(star_img, (self.x + 40, self.y))
 
     def click(self, x, y):
         if x >= self.x and x <= self.x + self.width:
@@ -19,20 +22,29 @@ class Button:
                 return True
         return False
 
+pygame.font.init()
+
 class Menu:
-    def __init__(self, x, y, bg):
+    def __init__(self, tower, x, y, bg, item_cost):
+        self.item_cost = item_cost
+        self.tower = tower
         self.x = x
         self.y = y
         self.width = 0
         self.height = 0
         self.buttons = []
-        self.item_names = []
         self.items = 0
         self.bg = bg
+        self.font = pygame.font.SysFont("comicsans", 20)
+
+
     def draw(self, win):
         win.blit(self.bg, (self.x, self.y - self.bg.get_height()))
         for button in self.buttons:
             button.draw(win)
+            text = self.font.render(str(self.item_cost[self.tower.level - 1]), 1, (255,255,255))
+            win.blit(text, (self.x + 50, self.y - 20) )
+
 
     def clicked(self, x, y):
         for button in self.buttons:
@@ -47,8 +59,8 @@ class Menu:
             button = Button(button_x, button_y, img, name)
             self.buttons.append(button)
         else:
-            button_x = self.buttons[len(self.buttons) - 1].x + 47
-            button_y = self.y - 40
+            button_x = self.buttons[len(self.buttons) - 1].x + 65
+            button_y = self.y - 42
             self.items += 1
             button = Button(button_x, button_y, img, name)
             self.buttons.append(button)
@@ -56,5 +68,8 @@ class Menu:
     def set_position(self, x, y):
         self.x = x
         self.y = y
+
+    def set_cost(self, item_cost):
+        self.item_cost = item_cost
 
 
