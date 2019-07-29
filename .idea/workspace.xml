@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0fe0665b-556e-4818-8b5f-13c6d992b32e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Python-PNG-Transparent-Image.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tower_defense/enemies/archer_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/enemies/archer_1.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tower_defense/menu/menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/menu/menu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tower_defense/tower_defense_game.py" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/tower_defense_game.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tower_defense/towers/archer_tower.py" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/towers/archer_tower.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tower_defense/towers/spear_tower.py" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/towers/spear_tower.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tower_defense/towers/support_towers.py" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/towers/support_towers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tower_defense/towers/tower.py" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/towers/tower.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tower_defense/towers/village_tower.py" beforeDir="false" afterPath="$PROJECT_DIR$/tower_defense/towers/village_tower.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,7 +19,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tower_defense/tower_defense_game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
+            <state relative-caret-position="-544">
               <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -34,11 +28,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tower_defense/menu/menu.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="867">
-              <caret line="51" column="18" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
+            <state relative-caret-position="68">
+              <caret line="42" column="32" selection-start-line="42" selection-start-column="32" selection-end-line="42" selection-end-column="32" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -46,11 +40,59 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tower_defense/enemies/archer_1.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tower_defense/towers/spear_tower.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+            <state relative-caret-position="170">
+              <caret line="18" column="56" selection-start-line="18" selection-start-column="56" selection-end-line="18" selection-end-column="56" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tower_defense/towers/support_towers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="29" column="42" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="42" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tower_defense/towers/village_tower.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="158">
+              <caret line="19" column="41" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tower_defense/towers/tower.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tower_defense/towers/archer_tower.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-811">
+              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="5" selection-end-column="120" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -93,18 +135,18 @@
         <option value="$PROJECT_DIR$/tower_defense/enemies/knight.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/tower_defense/tower_defense_game.py" />
-        <option value="$PROJECT_DIR$/tower_defense/menu/menu.py" />
-        <option value="$PROJECT_DIR$/tower_defense/towers/tower.py" />
-        <option value="$PROJECT_DIR$/tower_defense/towers/spear_tower.py" />
-        <option value="$PROJECT_DIR$/tower_defense/towers/archer_tower.py" />
-        <option value="$PROJECT_DIR$/tower_defense/towers/support_towers.py" />
-        <option value="$PROJECT_DIR$/tower_defense/towers/village_tower.py" />
         <option value="$PROJECT_DIR$/tower_defense/enemies/enemy.py" />
         <option value="$PROJECT_DIR$/tower_defense/enemies/archer_1.py" />
+        <option value="$PROJECT_DIR$/tower_defense/towers/tower.py" />
+        <option value="$PROJECT_DIR$/tower_defense/towers/archer_tower.py" />
+        <option value="$PROJECT_DIR$/tower_defense/towers/village_tower.py" />
+        <option value="$PROJECT_DIR$/tower_defense/towers/support_towers.py" />
+        <option value="$PROJECT_DIR$/tower_defense/towers/spear_tower.py" />
+        <option value="$PROJECT_DIR$/tower_defense/menu/menu.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
     <option name="width" value="697" />
     <option name="height" value="735" />
@@ -133,7 +175,7 @@
               <item name="python-game-collection" type="b2602c69:ProjectViewProjectNode" />
               <item name="python-game-collection" type="462c0819:PsiDirectoryNode" />
               <item name="tower_defense" type="462c0819:PsiDirectoryNode" />
-              <item name="enemies" type="462c0819:PsiDirectoryNode" />
+              <item name="towers" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -235,7 +277,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11532738" />
@@ -361,57 +403,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tower_defense/tower_defense_game.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tower_defense/towers/chinese_tower.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tower_defense/towers/archer_tower.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="61" column="55" selection-start-line="61" selection-start-column="55" selection-end-line="61" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tower_defense/towers/tower.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-85">
-          <caret line="4" column="23" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tower_defense/towers/spear_tower.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="64" column="21" selection-start-line="64" selection-start-column="17" selection-end-line="64" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tower_defense/towers/support_towers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="42" column="59" selection-start-line="42" selection-start-column="59" selection-end-line="42" selection-end-column="59" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
@@ -465,10 +460,70 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tower_defense/tower_defense_game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-544">
+          <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tower_defense/enemies/archer_1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tower_defense/towers/tower.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tower_defense/towers/archer_tower.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-811">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="5" selection-end-column="120" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tower_defense/towers/village_tower.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="63" column="46" selection-start-line="63" selection-start-column="46" selection-end-line="63" selection-end-column="46" />
+        <state relative-caret-position="158">
+          <caret line="19" column="41" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tower_defense/towers/support_towers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="29" column="42" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tower_defense/towers/spear_tower.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="18" column="56" selection-start-line="18" selection-start-column="56" selection-end-line="18" selection-end-column="56" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
@@ -477,18 +532,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tower_defense/menu/menu.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="51" column="18" selection-start-line="51" selection-start-column="18" selection-end-line="51" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tower_defense/enemies/archer_1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+        <state relative-caret-position="68">
+          <caret line="42" column="32" selection-start-line="42" selection-start-column="32" selection-end-line="42" selection-end-column="32" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>

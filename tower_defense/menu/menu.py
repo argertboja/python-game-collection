@@ -29,7 +29,6 @@ class Menu:
         self.item_names = []
         self.items = 0
         self.bg = bg
-
     def draw(self, win):
         win.blit(self.bg, (self.x, self.y - self.bg.get_height()))
         for button in self.buttons:
@@ -41,12 +40,21 @@ class Menu:
                 return button.name
 
     def add_button(self, img, name):
-        button_x = self.items * img.get_width()
-        button_y = self.y
-        self.items += 1
-        button = Button(button_x, button_y, img, name)
-        self.buttons.append(button)
+        if self.items == 0:
+            button_x = self.x + 15
+            button_y = self.y - 40
+            self.items += 1
+            button = Button(button_x, button_y, img, name)
+            self.buttons.append(button)
+        else:
+            button_x = self.buttons[len(self.buttons) - 1].x + 47
+            button_y = self.y - 40
+            self.items += 1
+            button = Button(button_x, button_y, img, name)
+            self.buttons.append(button)
 
     def set_position(self, x, y):
         self.x = x
         self.y = y
+
+

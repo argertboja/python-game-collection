@@ -3,7 +3,8 @@ import os
 import math
 from tower_defense.menu.menu import Menu
 
-menu_bg = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "bg.png")),(125, 50))
+upgrade_img = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "upgrade.png")),(32, 32))
+sell_img = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "sell.png")),(32, 32))
 from .tower import Tower
 
 class VillageTower(Tower):
@@ -17,6 +18,9 @@ class VillageTower(Tower):
         self.damage = 1
         self.id = 1
         self.original_range = self.range
+        self.menu.set_position(self.x - 10, self.y + 175)
+        self.menu.add_button(upgrade_img, "Upgrade")
+        self.menu.add_button(sell_img, "Sell")
 
         for x in range(1,7):
             if self.level == 1:
@@ -61,6 +65,5 @@ class VillageTower(Tower):
         if self.selected:
             win.blit(surface, (int(self.x + (self.img.get_width() / 2) - self.range), int(self.y + (self.img.get_height() / 2) - self.range)))
         #pygame.draw.circle(win, (255,0,0), (int(self.x + (self.img.get_width() / 2)), int(self.y + (self.img.get_height() / 2))), self.range, 1)
-            self.menu.set_position(self.x - 10, self.y + 175)
             self.menu.draw(win)
         win.blit(self.img, (self.x, self.y))

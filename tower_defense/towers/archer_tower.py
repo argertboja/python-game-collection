@@ -3,6 +3,9 @@ import os
 import math
 from .tower import Tower
 
+upgrade_img = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "upgrade.png")),(32, 32))
+sell_img = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "sell.png")),(32, 32))
+
 class ArcherTower(Tower):
 
     def __init__(self, x, y):
@@ -14,6 +17,9 @@ class ArcherTower(Tower):
         self.damage = 2
         self.id = 2
         self.original_range = self.range
+        self.menu.set_position(self.x, self.y + 165)
+        self.menu.add_button(upgrade_img, "Upgrade")
+        self.menu.add_button(sell_img, "Sell")
 
         for x in range(1,7):
             if self.level == 1:
@@ -59,6 +65,6 @@ class ArcherTower(Tower):
                            self.range, self.range)
         if self.selected:
             win.blit(surface, (int(self.x + (self.img.get_width() / 2) - self.range), int(self.y + (self.img.get_height() / 2) - self.range)))
-            self.menu.set_position(self.x, self.y + 165 )
+
             self.menu.draw(win)
         win.blit(self.img, (self.x, self.y))

@@ -2,6 +2,8 @@ import pygame
 import os
 import math
 
+upgrade_img = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "upgrade.png")),(32, 32))
+sell_img = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "sell.png")),(32, 32))
 from .tower import Tower
 
 class SpearTower(Tower):
@@ -15,6 +17,9 @@ class SpearTower(Tower):
         self.damage = 3
         self.id = 3
         self.original_range = self.range
+        self.menu.set_position(self.x - 20, self.y + 200)
+        self.menu.add_button(upgrade_img, "Upgrade")
+        self.menu.add_button(sell_img, "Sell")
 
 
         for x in range(1,18):
@@ -62,6 +67,5 @@ class SpearTower(Tower):
         if self.selected:
             win.blit(surface, (
         int(self.x + (self.img.get_width() / 2) - self.range), int(self.y + (self.img.get_height() / 2) - self.range)))
-            self.menu.set_position(self.x - 20, self.y + 196)
             self.menu.draw(win)
         win.blit(self.img, (self.x, self.y))
