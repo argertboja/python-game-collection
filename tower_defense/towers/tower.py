@@ -84,14 +84,16 @@ class Tower:
                 self.timer = time.time()
                 if closest_enemy.hit(damage):
                     enemies.remove(closest_enemy)
-            """
-            This piece of code is used for archer towers in order to flip the archer
-            if closest_enemy.x > self.x and not (self.flipped):
-                self.flipped = True
-                for x, img in enumerate(self.imgs):
-                    self.imgs[x] = pygame.transform.flip(img, True, False)
-            elif closest_enemy.x < self.x and self.flipped:
-                self.flipped = False
-                for x, img in enumerate(self.imgs):
-                    self.imgs[x] = pygame.transform.flip(img, True, False)
-            """
+                    return True
+        return False
+        """
+        This piece of code is used for archer towers in order to flip the archer
+        if closest_enemy.x > self.x and not (self.flipped):
+            self.flipped = True
+            for x, img in enumerate(self.imgs):
+                self.imgs[x] = pygame.transform.flip(img, True, False)
+        elif closest_enemy.x < self.x and self.flipped:
+            self.flipped = False
+            for x, img in enumerate(self.imgs):
+                self.imgs[x] = pygame.transform.flip(img, True, False)
+        """

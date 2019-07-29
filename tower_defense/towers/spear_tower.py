@@ -23,7 +23,7 @@ class SpearTower(Tower):
         self.id = 3
         self.original_range = self.range
         self.menu.set_position(self.x - 20, self.y + 200)
-        self.menu.set_cost([5000, 10000, 20000])
+        self.menu.set_cost([5000, 10000, "MAX"])
         self.menu.add_button(upgrade_img, "Upgrade")
         self.menu.add_button(sell_img, "Sell")
 
@@ -40,11 +40,11 @@ class SpearTower(Tower):
                 (78, 156)))
 
         if self.level == 1:
-            self.imgs = self.imgs_level1
+            self.imgs = self.imgs_level1[:]
         elif self.level == 2:
-            self.imgs = self.imgs_level2
+            self.imgs = self.imgs_level2[:]
         elif self.level == 3:
-            self.imgs = self.imgs_level3
+            self.imgs = self.imgs_level3[:]
 
     def change_range(self, new_range):
         """
@@ -55,7 +55,9 @@ class SpearTower(Tower):
         self.range = new_range
 
     def attack(self, enemies):
-        super().attack(enemies, self.range, self.in_range, self.damage)
+        if super().attack(enemies, self.range, self.in_range, self.damage):
+            return True
+        return False
 
     def draw(self, win):
         self.img = self.imgs[self.animation_count // 4]
@@ -81,8 +83,10 @@ class SpearTower(Tower):
         win.blit(self.img, (self.x, self.y))
 
     def upgrade(self):
-        self.level += 1
-        if self.level == 2:
-            self.imgs = self.imgs_level2
-        elif self.level == 3:
-            self.imgs = self.imgs_level3
+        if self.level < 3:
+            self.level += 1
+            self.damage += 1
+            if self.level == 2:
+                self.imgs = self.imgs_level2[:]
+            elif self.level == 3:
+                self.imgs = self.imgs_level3[:]

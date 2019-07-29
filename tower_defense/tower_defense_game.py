@@ -26,17 +26,23 @@ class TowerDefenseGame:
         self.towers = [SpearTower(80, 300), SpearTower(250, 300), ArcherTower(300, 300), VillageTower(500, 300)]
         self.support_towers = [RangeTower(140, 380)]
         self.lives = 8
-        self.budget = 800
+        self.budget = 1000
         self.bg_img = pygame.image.load(os.path.join("tower_defense\imgs\maps", "Game_Map_1.jpg"))
         self.heart_img = None
         self.heart_imgs = []
         self.heart_animation_count = 0
+        self.star_img = None
+        self.star_imgs = []
+        self.star_animation_count = 0
         for x in range(1,30):
             self.heart_imgs.append(
-                pygame.image.load(os.path.join("tower_defense\imgs\icons\heart", "Layer " + str(x) + ".png")))
+                pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\icons\heart", "Layer " + str(x) + ".png")), (32, 32)))
+        for x in range(1,9):
+            self.star_imgs.append(
+                pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\icons\star", str(x) + ".png")), (32, 32)))
         self.clicks = [] # to be removed
         self.timer = time.time()
-        self.font = pygame.font.SysFont("comicsans", 60)
+        self.font = pygame.font.SysFont("comicsans", 45)
         self.selected_tower = None
 
     def run(self):
@@ -92,7 +98,8 @@ class TowerDefenseGame:
                     run = False
 
             for t in self.towers:
-                t.attack(self.enemies)
+                if t.attack(self.enemies):
+                    self.budget += 100
 
             for st in self.support_towers:
                 st.increase_range(self.towers)
@@ -114,7 +121,10 @@ class TowerDefenseGame:
             st.draw(self.win)
         text = self.font.render(str(self.lives), 1, (255,255,255))
         self.win.blit(text, (self.width-90, 10))
+        text2 = self.font.render(str(self.budget), 1, (255, 255, 255))
+        self.win.blit(text2, (self.width - 140, 50))
         self.draw_heart()
+        self.draw_star()
         pygame.init()
         pygame.display.update()
 
@@ -126,3 +136,12 @@ class TowerDefenseGame:
             self.heart_animation_count = 0
 
         self.win.blit(self.heart_img, (self.width-60, 5))
+
+    def draw_star(self):
+        self.star_img = self.star_imgs[self.star_animation_count // 4]
+        self.star_animation_count += 1
+
+        if self.star_animation_count >= len(self.star_imgs) * 4:
+            self.star_animation_count = 0
+
+        self.win.blit(self.star_img, (self.width-60, 50))

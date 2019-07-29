@@ -21,7 +21,7 @@ class ArcherTower(Tower):
         self.id = 2
         self.original_range = self.range
         self.menu.set_position(self.x, self.y + 165)
-        self.menu.set_cost([4000, 8000, 12000])
+        self.menu.set_cost([4000, 8000, "MAX"])
         self.menu.add_button(upgrade_img, "Upgrade")
         self.menu.add_button(sell_img, "Sell")
 
@@ -37,11 +37,11 @@ class ArcherTower(Tower):
                     (120, 141)))
 
         if self.level == 1:
-            self.imgs = self.imgs_level1
+            self.imgs = self.imgs_level1[:]
         elif self.level == 2:
-            self.imgs = self.imgs_level2
+            self.imgs = self.imgs_level2[:]
         elif self.level == 3:
-            self.imgs = self.imgs_level3
+            self.imgs = self.imgs_level3[:]
 
     def change_range(self, new_range):
         """
@@ -52,7 +52,9 @@ class ArcherTower(Tower):
         self.range = new_range
 
     def attack(self, enemies):
-        super().attack(enemies, self.range, self.in_range, self.damage)
+        if super().attack(enemies, self.range, self.in_range, self.damage):
+            return True
+        return False
 
     def draw(self, win):
 
@@ -79,8 +81,10 @@ class ArcherTower(Tower):
 
 
     def upgrade(self):
-        self.level += 1
-        if self.level == 2:
-            self.imgs = self.imgs_level2
-        elif self.level == 3:
-            self.imgs = self.imgs_level3
+        if self.level < 3:
+            self.level += 1
+            self.damage += 1
+            if self.level == 2:
+                self.imgs = self.imgs_level2[:]
+            elif self.level == 3:
+                self.imgs = self.imgs_level3[:]
