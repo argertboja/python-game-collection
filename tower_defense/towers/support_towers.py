@@ -30,6 +30,7 @@ class RangeTower(Tower):
         self.img = None
         self.menu.set_position(self.x - 15, self.y + 120)
         self.menu.set_cost([1000, 3000, "MAX"])
+        self.value = [30, 100, 300]
         self.menu.add_button(upgrade_img, "Upgrade")
         self.menu.add_button(sell_img, "Sell")
 

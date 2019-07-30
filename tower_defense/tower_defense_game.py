@@ -26,7 +26,7 @@ class TowerDefenseGame:
         self.towers = [SpearTower(80, 300), SpearTower(250, 300), ArcherTower(300, 300), VillageTower(500, 300)]
         self.support_towers = [RangeTower(140, 380)]
         self.lives = 8
-        self.budget = 1000
+        self.budget = 5000
         self.bg_img = pygame.image.load(os.path.join("tower_defense\imgs\maps", "Game_Map_1.jpg"))
         self.heart_img = None
         self.heart_imgs = []
@@ -77,6 +77,12 @@ class TowerDefenseGame:
                                     self.selected_tower.upgrade()
                                 else:
                                     print("Budget is not enough")
+                            if button_clicked == "Sell":
+                                self.budget += self.selected_tower.value[self.selected_tower.level - 1]
+                                if self.towers.count(self.selected_tower) > 0:
+                                    self.towers.remove(self.selected_tower)
+                                else:
+                                    self.support_towers.remove(self.selected_tower)
                     if not(button_clicked):
                         for t in self.towers:
                             if t.click(pos[0], pos[1]):

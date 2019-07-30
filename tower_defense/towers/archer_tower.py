@@ -22,6 +22,7 @@ class ArcherTower(Tower):
         self.original_range = self.range
         self.menu.set_position(self.x, self.y + 165)
         self.menu.set_cost([4000, 8000, "MAX"])
+        self.value = [200, 400, 800]
         self.menu.add_button(upgrade_img, "Upgrade")
         self.menu.add_button(sell_img, "Sell")
 

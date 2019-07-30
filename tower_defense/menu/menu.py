@@ -44,6 +44,8 @@ class Menu:
             button.draw(win)
             text = self.font.render(str(self.item_cost[self.tower.level - 1]), 1, (255,255,255))
             win.blit(text, (self.x + 50, self.y - 20) )
+            text2 = self.font.render(str(self.tower.value[self.tower.level - 1]), 1, (255, 255, 255))
+            win.blit(text2, (self.x + 115, self.y - 20))
 
 
     def clicked(self, x, y):

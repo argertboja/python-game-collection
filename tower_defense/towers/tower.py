@@ -24,6 +24,7 @@ class Tower:
         self.timer = time.time()
         self.damage = 1
         self.range = 1
+        self.value = []
 
     def click(self, x_pos, y_pos):
         """

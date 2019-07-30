@@ -24,6 +24,7 @@ class SpearTower(Tower):
         self.original_range = self.range
         self.menu.set_position(self.x - 20, self.y + 200)
         self.menu.set_cost([5000, 10000, "MAX"])
+        self.value = [300, 500, 1000]
         self.menu.add_button(upgrade_img, "Upgrade")
         self.menu.add_button(sell_img, "Sell")
 

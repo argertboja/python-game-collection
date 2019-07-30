@@ -23,6 +23,7 @@ class VillageTower(Tower):
         self.original_range = self.range
         self.menu.set_position(self.x - 10, self.y + 175)
         self.menu.set_cost([2000, 4000, "MAX"])
+        self.value = [50, 200, 400]
         self.menu.add_button(upgrade_img, "Upgrade")
         self.menu.add_button(sell_img, "Sell")
 
