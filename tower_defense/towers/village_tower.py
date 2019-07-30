@@ -53,9 +53,7 @@ class VillageTower(Tower):
         self.range = new_range
 
     def attack(self, enemies):
-        if super().attack(enemies, self.range, self.in_range, self.damage):
-            return True
-        return False
+        return super().attack(enemies, self.range, self.in_range, self.damage)
 
     def draw(self, win):
 

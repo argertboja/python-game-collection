@@ -84,8 +84,8 @@ class Tower:
                 self.timer = time.time()
                 if closest_enemy.hit(damage):
                     enemies.remove(closest_enemy)
-                    return True
-        return False
+                    return closest_enemy.max_health
+        return 0
         """
         This piece of code is used for archer towers in order to flip the archer
         if closest_enemy.x > self.x and not (self.flipped):

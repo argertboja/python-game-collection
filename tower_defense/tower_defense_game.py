@@ -70,7 +70,13 @@ class TowerDefenseGame:
                         button_clicked = self.selected_tower.menu.clicked(pos[0], pos[1])
                         if button_clicked:
                             if button_clicked == "Upgrade":
-                                self.selected_tower.upgrade()
+                                #self.selected_tower.upgrade()
+                                cost = self.selected_tower.menu.item_cost[self.selected_tower.level-1]
+                                if cost <= self.budget:
+                                    self.budget -= cost
+                                    self.selected_tower.upgrade()
+                                else:
+                                    print("Budget is not enough")
                     if not(button_clicked):
                         for t in self.towers:
                             if t.click(pos[0], pos[1]):
@@ -98,8 +104,7 @@ class TowerDefenseGame:
                     run = False
 
             for t in self.towers:
-                if t.attack(self.enemies):
-                    self.budget += 100
+                self.budget += t.attack(self.enemies)
 
             for st in self.support_towers:
                 st.increase_range(self.towers)
