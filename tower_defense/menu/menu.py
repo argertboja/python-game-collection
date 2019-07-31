@@ -30,8 +30,6 @@ class Menu:
         self.tower = tower
         self.x = x
         self.y = y
-        self.width = 0
-        self.height = 0
         self.buttons = []
         self.items = 0
         self.bg = bg
@@ -74,4 +72,9 @@ class Menu:
     def set_cost(self, item_cost):
         self.item_cost = item_cost
 
+class VerticalMenu(Menu):
+    def __init__(self, x, y, bg):
+        super().__init__([], x, y, bg, None)
 
+    def draw(self, win):
+        win.blit(self.bg, (self.x, self.y))

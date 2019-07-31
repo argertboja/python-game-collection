@@ -9,11 +9,11 @@ from .enemies.ninja import Ninja
 from .enemies.archer_1 import Archer_1
 from .enemies.archer_2 import Archer_2
 from .enemies.archer_3 import Archer_3
-from .towers.chinese_tower import ChineseTower
 from .towers.spear_tower import SpearTower
 from .towers.archer_tower import ArcherTower
 from .towers.village_tower import VillageTower
 from .towers.support_towers import RangeTower
+from .menu.menu import VerticalMenu
 
 
 class TowerDefenseGame:
@@ -27,6 +27,9 @@ class TowerDefenseGame:
         self.support_towers = [RangeTower(140, 380)]
         self.lives = 8
         self.budget = 5000
+        self.menu_bg = pygame.transform.rotate(
+                        pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "bg.png")), (450, 100)), 90)
+        self.menu = VerticalMenu(self.width - 100, 100, self.menu_bg)
         self.bg_img = pygame.image.load(os.path.join("tower_defense\imgs\maps", "Game_Map_1.jpg"))
         self.heart_img = None
         self.heart_imgs = []
@@ -136,6 +139,8 @@ class TowerDefenseGame:
         self.win.blit(text2, (self.width - 140, 50))
         self.draw_heart()
         self.draw_star()
+
+        self.menu.draw(self.win)
         pygame.init()
         pygame.display.update()
 
