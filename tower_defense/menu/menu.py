@@ -72,9 +72,25 @@ class Menu:
     def set_cost(self, item_cost):
         self.item_cost = item_cost
 
+class VerticalButton(Button):
+    def __init__(self, x, y, img, name):
+        super().__init__(x, y, img, name)
+
+    def draw(self, win):
+        win.blit(self.img, (self.x, self.y))
+
 class VerticalMenu(Menu):
     def __init__(self, x, y, bg):
         super().__init__([], x, y, bg, None)
 
     def draw(self, win):
         win.blit(self.bg, (self.x, self.y))
+        for button in self.buttons:
+            button.draw(win)
+
+    def add_button(self, img, name):
+        button_x = self.x + 20
+        button_y = self.y + 50 + self.items*90
+        button = VerticalButton(button_x, button_y, img, name)
+        self.buttons.append(button)
+        self.items += 1
