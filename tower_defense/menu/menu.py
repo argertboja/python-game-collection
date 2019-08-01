@@ -73,11 +73,16 @@ class Menu:
         self.item_cost = item_cost
 
 class VerticalButton(Button):
-    def __init__(self, x, y, img, name):
+    def __init__(self, x, y, real_img, img, name, value):
         super().__init__(x, y, img, name)
+        self.value = value
+        self.real_img = real_img
 
     def draw(self, win):
         win.blit(self.img, (self.x, self.y))
+
+    def draw_moving_button(self, win, x, y):
+        win.blit(self.real_img, (x - self.real_img.get_width()/2, y - self.real_img.get_height()/2))
 
 class VerticalMenu(Menu):
     def __init__(self, x, y, bg):
@@ -87,10 +92,19 @@ class VerticalMenu(Menu):
         win.blit(self.bg, (self.x, self.y))
         for button in self.buttons:
             button.draw(win)
+            text = self.font.render(str(button.value), 1, (255, 255, 255))
+            win.blit(text, (button.x + 8, button.y + 65))
+            win.blit(star_img, (button.x + 40, button.y + 62))
 
-    def add_button(self, img, name):
-        button_x = self.x + 20
+
+    def add_button(self, real_img, img, name, value):
+        button_x = self.x + 27
         button_y = self.y + 50 + self.items*90
-        button = VerticalButton(button_x, button_y, img, name)
+        button = VerticalButton(button_x, button_y, real_img, img, name, value)
         self.buttons.append(button)
         self.items += 1
+
+    def clicked(self, x, y):
+        for button in self.buttons:
+            if button.click(x, y):
+                return button
