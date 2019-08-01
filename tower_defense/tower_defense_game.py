@@ -52,6 +52,7 @@ class TowerDefenseGame:
         self.side_button = None
         self.side_button_clicked = False
         self.button_name = ""
+        self.button_value = 0
         self.pos = [0,0]
         for x in range(1,30):
             self.heart_imgs.append(
@@ -121,19 +122,24 @@ class TowerDefenseGame:
 
                     if self.side_button_clicked:
                         self.side_button_clicked = False
-                        if self.button_name == "village_tower_button":
+                        if self.button_name == "village_tower_button" and self.budget >= self.button_value:
                             self.towers.append(VillageTower(self.pos[0] - 60, self.pos[1] - 70))
-                        elif self.button_name == "archer_tower_button":
+                            self.budget -= self.button_value
+                        elif self.button_name == "archer_tower_button" and self.budget >= self.button_value:
                             self.towers.append(ArcherTower(self.pos[0] - 60, self.pos[1] - 70))
-                        elif self.button_name == "spear_tower_button":
+                            self.budget -= self.button_value
+                        elif self.button_name == "spear_tower_button" and self.budget >= self.button_value:
                             self.towers.append(SpearTower(self.pos[0] - 39, self.pos[1] - 78))
-                        elif self.button_name == "support_tower_button":
+                            self.budget -= self.button_value
+                        elif self.button_name == "support_tower_button" and self.budget >= self.button_value:
                             self.support_towers.append(RangeTower(self.pos[0] - 40, self.pos[1] - 40))
+                            self.budget -= self.button_value
                         self.side_button = None
 
                     if self.side_button and not(self.side_button_clicked):
                         self.side_button_clicked = True
                         self.button_name = self.side_button.name
+                        self.button_value = self.side_button.value
 
                 print(self.side_button_clicked)
 
