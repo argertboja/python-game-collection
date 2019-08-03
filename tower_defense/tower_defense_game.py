@@ -14,6 +14,7 @@ from .towers.archer_tower import ArcherTower
 from .towers.village_tower import VillageTower
 from .towers.support_towers import RangeTower
 from .menu.menu import VerticalMenu
+from random import randrange
 
 spear_tower_icon = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\icons", "tw1_icon.png")),(50, 60))
 archer_tower_icon = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\icons", "tw2_icon.png")),(50, 60))
@@ -65,6 +66,19 @@ class TowerDefenseGame:
         self.font = pygame.font.SysFont("comicsans", 45)
         self.selected_tower = None
 
+        self.wave = [
+                        [18, 0, 18, 0, 0],
+                        [0, 18, 0, 18, 0],
+                        [18, 0, 18, 0, 18],
+                        [18, 0, 18 , 0, 18],
+                        [18, 18, 0 , 18, 0],
+                        [0, 18, 18 , 18, 0],
+                        [0, 18, 0 , 18, 18],
+                        [18, 18, 18 , 18, 18],
+                    ]
+        self.wave_turn = 0
+        self.enemy_type = [Archer_1(), Archer_2(), Archer_3(), Ninja(), Knight()]
+
     def run(self):
         run = True
 
@@ -73,7 +87,16 @@ class TowerDefenseGame:
         while run:
             if time.time() - self.timer >= random.randrange(1,5):
                 self.timer = time.time()
-                self.enemies.append(random.choice([Archer_1(), Archer_2(), Archer_3(), Ninja(), Knight()]))
+                if self.wave_turn < len(self.wave):
+                    if (self.wave[self.wave_turn][0], self.wave[self.wave_turn][1], self.wave[self.wave_turn][2],
+                        self.wave[self.wave_turn][3], self.wave[self.wave_turn][4]) == (0,0,0,0,0):
+                        self.wave_turn += 1
+                    enemy_index = randrange(5)
+                    if self.wave[self.wave_turn][enemy_index] > 0:
+                        self.wave[self.wave_turn][enemy_index] -= 1
+                        self.enemies.append(self.enemy_type[enemy_index])
+                        #print("wave turn " + str(self.wave_turn) + " enemy type " + str(self.enemy_type[enemy_index].id))
+                #self.enemies.append(random.choice([Archer_1(), Archer_2(), Archer_3(), Ninja(), Knight()]))
                 #self.enemies.append(Archer_1())
             clock.tick(120)
 
@@ -140,8 +163,6 @@ class TowerDefenseGame:
                         self.side_button_clicked = True
                         self.button_name = self.side_button.name
                         self.button_value = self.side_button.value
-
-                print(self.side_button_clicked)
 
 
 
