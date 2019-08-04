@@ -13,7 +13,7 @@ from .towers.spear_tower import SpearTower
 from .towers.archer_tower import ArcherTower
 from .towers.village_tower import VillageTower
 from .towers.support_towers import RangeTower
-from .menu.menu import VerticalMenu
+from .menu.menu import VerticalMenu, PlayPauseButton
 from random import randrange
 
 spear_tower_icon = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\icons", "tw1_icon.png")),(50, 60))
@@ -24,6 +24,9 @@ spear_tower_img = pygame.transform.scale(pygame.image.load(os.path.join("tower_d
 archer_tower_img = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\\towers\\tower2_level1", "1.png")),(120, 141))
 village_tower_img = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\\towers\\tower3_level1", "1.png")),(120, 141))
 support_tower_img = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\\towers\\support_towers", "tower1_level1_damage.png")),(80, 80))
+play_button = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\icons", "play.png")), (70, 60))
+pause_button = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\icons", "pause.png")), (70, 60))
+
 
 class TowerDefenseGame:
 
@@ -79,6 +82,9 @@ class TowerDefenseGame:
         self.wave_turn = 0
         self.enemy_type = [Archer_1(), Archer_2(), Archer_3(), Ninja(), Knight()]
 
+        self.pause_button = PlayPauseButton(10, self.height - 70, play_button, play_button, pause_button)
+        self.paused = False
+
     def run(self):
         run = True
 
@@ -94,11 +100,23 @@ class TowerDefenseGame:
                     enemy_index = randrange(5)
                     if self.wave[self.wave_turn][enemy_index] > 0:
                         self.wave[self.wave_turn][enemy_index] -= 1
-                        self.enemies.append(self.enemy_type[enemy_index])
+                        # self.enemies.append(self.enemy_type[enemy_index])
+                        # print(self.wave)
+                        if enemy_index == 0:
+                            self.enemies.append(Archer_1())
+                        elif enemy_index == 1:
+                            self.enemies.append(Archer_2())
+                        elif enemy_index == 2:
+                            self.enemies.append(Archer_3())
+                        elif enemy_index == 3:
+                            self.enemies.append(Ninja())
+                        elif enemy_index == 4:
+                            self.enemies.append(Knight())
+                        # print(self.wave)
                         #print("wave turn " + str(self.wave_turn) + " enemy type " + str(self.enemy_type[enemy_index].id))
                 #self.enemies.append(random.choice([Archer_1(), Archer_2(), Archer_3(), Ninja(), Knight()]))
                 #self.enemies.append(Archer_1())
-            clock.tick(120)
+            clock.tick(150)
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -107,6 +125,14 @@ class TowerDefenseGame:
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     # self.clicks.append(pos)
                     # print(self.clicks)
+                    if self.pause_button.click(self.pos[0], self.pos[1]):
+                        if not (self.paused):
+                            self.pause_button.paused = True
+                            self.paused = True
+                        else:
+                            self.pause_button.paused = False
+                            self.paused = False
+
                     button_clicked = None
                     if self.selected_tower:
                         button_clicked = self.selected_tower.menu.clicked(self.pos[0], self.pos[1])
@@ -187,16 +213,16 @@ class TowerDefenseGame:
                 st.increase_range(self.towers)
 
 
-            self.draw()
+            self.draw(self.paused)
 
         pygame.quit()
 
-    def draw(self):
+    def draw(self, paused):
         self.win.blit(self.bg_img, (0,0))
         # for c in path:
           #  pygame.draw.circle(self.win, (255, 0, 0), (c[0], c[1]), 5, 0)
         for enemy in self.enemies:
-            enemy.draw(self.win)
+            enemy.draw(self.win, paused)
         for tower in self.towers:
             tower.draw(self.win)
         for st in self.support_towers:
@@ -209,6 +235,8 @@ class TowerDefenseGame:
         self.draw_star()
 
         self.menu.draw(self.win)
+
+        self.pause_button.draw(self.win)
 
         if self.side_button_clicked and self.side_button:
             self.side_button.draw_moving_button(self.win, self.pos[0], self.pos[1])

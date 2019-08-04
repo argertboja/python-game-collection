@@ -84,6 +84,19 @@ class VerticalButton(Button):
     def draw_moving_button(self, win, x, y):
         win.blit(self.real_img, (x - self.real_img.get_width()/2, y - self.real_img.get_height()/2))
 
+class PlayPauseButton(Button):
+    def __init__(self, x, y, img, play_img, pause_img):
+        super().__init__(x, y, img, "")
+        self.play_img = play_img
+        self.pause_img = pause_img
+        self.paused = False
+
+    def draw(self, win):
+        if not(self.paused):
+            win.blit(self.play_img, (self.x, self.y))
+        else:
+            win.blit(self.pause_img, (self.x, self.y))
+
 class VerticalMenu(Menu):
     def __init__(self, x, y, bg):
         super().__init__([], x, y, bg, None)
