@@ -16,7 +16,7 @@ class Ninja(Enemy):
 
     def __init__(self):
         super().__init__()
-        self.max_health = 5
+        self.max_health = 50
         self.health = self.max_health
         self.imgs = imgs[:]
 

@@ -93,29 +93,30 @@ class TowerDefenseGame:
         while run:
             if time.time() - self.timer >= random.randrange(1,5):
                 self.timer = time.time()
-                if self.wave_turn < len(self.wave):
-                    if (self.wave[self.wave_turn][0], self.wave[self.wave_turn][1], self.wave[self.wave_turn][2],
-                        self.wave[self.wave_turn][3], self.wave[self.wave_turn][4]) == (0,0,0,0,0):
-                        self.wave_turn += 1
-                    enemy_index = randrange(5)
-                    if self.wave[self.wave_turn][enemy_index] > 0:
-                        self.wave[self.wave_turn][enemy_index] -= 1
-                        # self.enemies.append(self.enemy_type[enemy_index])
-                        # print(self.wave)
-                        if enemy_index == 0:
-                            self.enemies.append(Archer_1())
-                        elif enemy_index == 1:
-                            self.enemies.append(Archer_2())
-                        elif enemy_index == 2:
-                            self.enemies.append(Archer_3())
-                        elif enemy_index == 3:
-                            self.enemies.append(Ninja())
-                        elif enemy_index == 4:
-                            self.enemies.append(Knight())
-                        # print(self.wave)
-                        #print("wave turn " + str(self.wave_turn) + " enemy type " + str(self.enemy_type[enemy_index].id))
-                #self.enemies.append(random.choice([Archer_1(), Archer_2(), Archer_3(), Ninja(), Knight()]))
-                #self.enemies.append(Archer_1())
+                if not (self.paused):
+                    if self.wave_turn < len(self.wave):
+                        if (self.wave[self.wave_turn][0], self.wave[self.wave_turn][1], self.wave[self.wave_turn][2],
+                            self.wave[self.wave_turn][3], self.wave[self.wave_turn][4]) == (0,0,0,0,0):
+                            self.wave_turn += 1
+                        enemy_index = randrange(5)
+                        if self.wave[self.wave_turn][enemy_index] > 0:
+                            self.wave[self.wave_turn][enemy_index] -= 1
+                            # self.enemies.append(self.enemy_type[enemy_index])
+                            # print(self.wave)
+                            if enemy_index == 0:
+                                self.enemies.append(Archer_1())
+                            elif enemy_index == 1:
+                                self.enemies.append(Archer_2())
+                            elif enemy_index == 2:
+                                self.enemies.append(Archer_3())
+                            elif enemy_index == 3:
+                                self.enemies.append(Ninja())
+                            elif enemy_index == 4:
+                                self.enemies.append(Knight())
+                            # print(self.wave)
+                            #print("wave turn " + str(self.wave_turn) + " enemy type " + str(self.enemy_type[enemy_index].id))
+                    #self.enemies.append(random.choice([Archer_1(), Archer_2(), Archer_3(), Ninja(), Knight()]))
+                    #self.enemies.append(Archer_1())
             clock.tick(150)
 
             for event in pygame.event.get():
@@ -205,9 +206,9 @@ class TowerDefenseGame:
                 if self.lives <= 0:
                     print("You lost!")
                     run = False
-
-            for t in self.towers:
-                self.budget += t.attack(self.enemies)
+            if not(self.paused):
+                for t in self.towers:
+                    self.budget += t.attack(self.enemies)
 
             for st in self.support_towers:
                 st.increase_range(self.towers)
@@ -224,7 +225,7 @@ class TowerDefenseGame:
         for enemy in self.enemies:
             enemy.draw(self.win, paused)
         for tower in self.towers:
-            tower.draw(self.win)
+            tower.draw(self.win, paused)
         for st in self.support_towers:
             st.draw(self.win)
         text = self.font.render(str(self.lives), 1, (255,255,255))

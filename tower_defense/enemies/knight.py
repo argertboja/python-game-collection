@@ -12,7 +12,7 @@ class Knight(Enemy):
 
     def __init__(self):
         super().__init__()
-        self.max_health = 8
+        self.max_health = 80
         self.health = self.max_health
         self.imgs = imgs[:]
 

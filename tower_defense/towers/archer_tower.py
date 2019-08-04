@@ -55,16 +55,17 @@ class ArcherTower(Tower):
     def attack(self, enemies):
         return super().attack(enemies, self.range, self.in_range, self.damage)
 
-    def draw(self, win):
+    def draw(self, win, paused):
 
         self.img = self.imgs[self.animation_count // 4]
 
         if self.in_range == False:
             self.animation_count = 0
         else:
-            self.animation_count += 1
-            if self.animation_count >= len(self.imgs) * 4:
-                self.animation_count = 0
+            if not(paused):
+                self.animation_count += 1
+                if self.animation_count >= len(self.imgs) * 4:
+                    self.animation_count = 0
 
         #pygame.draw.circle(win, (255,0,0), (int(self.x +
         #                   (self.img.get_width() / 2)), int(self.y + (self.img.get_height() / 2))), self.range, 1)

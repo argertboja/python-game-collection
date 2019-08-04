@@ -15,7 +15,7 @@ class Archer_3(Enemy):
 
     def __init__(self):
         super().__init__()
-        self.max_health = 3
+        self.max_health = 30
         self.health = self.max_health
         self.imgs = imgs[:]
 
