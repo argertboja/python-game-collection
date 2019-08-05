@@ -240,7 +240,7 @@ class TowerDefenseGame:
         self.pause_button.draw(self.win)
 
         if self.side_button_clicked and self.side_button:
-            self.side_button.draw_moving_button(self.win, self.pos[0], self.pos[1])
+            self.side_button.draw_moving_button(self.win, self.pos[0], self.pos[1], self.towers)
 
 
         pygame.init()

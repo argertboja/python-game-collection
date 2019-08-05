@@ -81,7 +81,20 @@ class VerticalButton(Button):
     def draw(self, win):
         win.blit(self.img, (self.x, self.y))
 
-    def draw_moving_button(self, win, x, y):
+    def draw_moving_button(self, win, x, y, towers):
+        """
+        need to be worked upon
+        :param win:
+        :param x:
+        :param y:
+        :param towers:
+        :return:
+        """
+
+        for tower in towers:
+            if x >= tower.x and x <= tower.x + tower.width:
+                if y >= tower.y and y <= tower.y + tower.height:
+                    print("inside")
         win.blit(self.real_img, (x - self.real_img.get_width()/2, y - self.real_img.get_height()/2))
 
 class PlayPauseButton(Button):
