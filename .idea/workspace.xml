@@ -16,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tower_defense/tower_defense_game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="36" column="77" selection-start-line="36" selection-start-column="77" selection-end-line="36" selection-end-column="77" />
+            <state relative-caret-position="212">
+              <caret line="98" column="68" selection-start-line="98" selection-start-column="68" selection-end-line="98" selection-end-column="68" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -64,8 +64,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tower_defense/menu/menu.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="107">
-              <caret line="86" column="71" selection-start-line="86" selection-start-column="71" selection-end-line="86" selection-end-column="71" />
+            <state relative-caret-position="277">
+              <caret line="129" column="30" selection-start-line="129" selection-start-column="30" selection-end-line="129" selection-end-column="30" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -162,6 +162,12 @@
               <item name="python-game-collection" type="462c0819:PsiDirectoryNode" />
               <item name="tower_defense" type="462c0819:PsiDirectoryNode" />
               <item name="menu" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="python-game-collection" type="b2602c69:ProjectViewProjectNode" />
+              <item name="python-game-collection" type="462c0819:PsiDirectoryNode" />
+              <item name="tower_defense" type="462c0819:PsiDirectoryNode" />
+              <item name="sounds" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="python-game-collection" type="b2602c69:ProjectViewProjectNode" />
@@ -506,8 +512,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tower_defense/menu/menu.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="86" column="71" selection-start-line="86" selection-start-column="71" selection-end-line="86" selection-end-column="71" />
+        <state relative-caret-position="277">
+          <caret line="129" column="30" selection-start-line="129" selection-start-column="30" selection-end-line="129" selection-end-column="30" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
@@ -516,8 +522,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tower_defense/tower_defense_game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="36" column="77" selection-start-line="36" selection-start-column="77" selection-end-line="36" selection-end-column="77" />
+        <state relative-caret-position="212">
+          <caret line="98" column="68" selection-start-line="98" selection-start-column="68" selection-end-line="98" selection-end-column="68" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>

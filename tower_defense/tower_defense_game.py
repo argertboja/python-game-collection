@@ -31,10 +31,15 @@ restricted_village_tower_img = pygame.transform.scale(pygame.image.load(os.path.
 restricted_support_tower_img = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\\towers\\support_towers", "restricted_tower1_level1_damage.png")),(80, 80))
 play_button = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\icons", "play.png")), (70, 60))
 pause_button = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\icons", "pause.png")), (70, 60))
+play_music_button = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\icons", "play_music.png")), (110, 50))
+mute_music_button = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\icons", "mute_music.png")), (110, 50))
 
 pygame.init()
 
 pygame.mixer.music.load(os.path.join("tower_defense\sounds", "bg_music.mp3"))
+pygame.mixer.music.set_volume(0.5)
+button_sound = pygame.mixer.Sound(os.path.join("tower_defense\sounds", "button-16.wav"))
+coins_sound = pygame.mixer.Sound(os.path.join("tower_defense\sounds", "button-16.wav"))
 
 class TowerDefenseGame:
 
@@ -91,19 +96,28 @@ class TowerDefenseGame:
         self.enemy_type = [Archer_1(), Archer_2(), Archer_3(), Ninja(), Knight()]
 
         self.pause_button = PlayPauseButton(10, self.height - 70, play_button, play_button, pause_button)
+        self.mute_music_button = PlayPauseButton(85, self.height - 60, play_music_button, mute_music_button, play_music_button)
         self.paused = False
 
         self.drawable = True
 
+        self.mute_sounds = False
+        self.mute_music = False
+
     def run(self):
 
-        pygame.mixer.music.play(1)
+        if not (self.mute_music):
+            pygame.mixer.music.play(1)
 
         run = True
 
         clock = pygame.time.Clock()
 
         while run:
+            if(self.mute_music):
+                pygame.mixer.music.pause()
+            else:
+                pygame.mixer.music.unpause()
             if time.time() - self.timer >= random.randrange(1,5):
                 self.timer = time.time()
                 if not (self.paused):
@@ -140,6 +154,7 @@ class TowerDefenseGame:
                     # self.clicks.append(pos)
                     # print(self.clicks)
                     if self.pause_button.click(self.pos[0], self.pos[1]):
+                        button_sound.play(0)
                         if not (self.paused):
                             self.pause_button.paused = True
                             self.paused = True
@@ -147,8 +162,17 @@ class TowerDefenseGame:
                             self.pause_button.paused = False
                             self.paused = False
 
+                    if self.mute_music_button.click(self.pos[0], self.pos[1]):
+                        if not (self.mute_music):
+                            self.mute_music_button.paused = True
+                            self.mute_music = True
+                        else:
+                            self.mute_music_button.paused = False
+                            self.mute_music = False
+
                     button_clicked = None
                     if self.selected_tower:
+                        button_sound.play(0)
                         button_clicked = self.selected_tower.menu.clicked(self.pos[0], self.pos[1])
                         if button_clicked:
                             if button_clicked == "Upgrade":
@@ -168,11 +192,13 @@ class TowerDefenseGame:
                     if not(button_clicked):
                         for t in self.towers:
                             if t.click(self.pos[0], self.pos[1]):
+                                button_sound.play(0)
                                 t.selected = True
                                 self.selected_tower = t
                             else:
                                 t.selected = False
                         for t in self.support_towers:
+                            button_sound.play(0)
                             if t.click(self.pos[0], self.pos[1]):
                                 t.selected = True
                                 self.selected_tower = t
@@ -180,27 +206,35 @@ class TowerDefenseGame:
                                 t.selected = False
 
                     if self.side_button is None:
+                        button_sound.play(0)
                         self.side_button = self.menu.clicked(self.pos[0], self.pos[1])
 
 
                     if self.side_button_clicked:
+                        button_sound.play(0)
                         self.side_button_clicked = False
                         if self.drawable:
+                            button_sound.play(0)
                             if self.button_name == "village_tower_button" and self.budget >= self.button_value:
                                 self.towers.append(VillageTower(self.pos[0] - 60, self.pos[1] - 70))
+                                coins_sound.play()
                                 self.budget -= self.button_value
                             elif self.button_name == "archer_tower_button" and self.budget >= self.button_value:
                                 self.towers.append(ArcherTower(self.pos[0] - 60, self.pos[1] - 70))
+                                coins_sound.play()
                                 self.budget -= self.button_value
                             elif self.button_name == "spear_tower_button" and self.budget >= self.button_value:
                                 self.towers.append(SpearTower(self.pos[0] - 39, self.pos[1] - 78))
+                                coins_sound.play()
                                 self.budget -= self.button_value
                             elif self.button_name == "support_tower_button" and self.budget >= self.button_value:
                                 self.support_towers.append(RangeTower(self.pos[0] - 40, self.pos[1] - 40))
+                                coins_sound.play()
                                 self.budget -= self.button_value
                             self.side_button = None
 
                     if self.side_button and not(self.side_button_clicked):
+                        button_sound.play(0)
                         self.side_button_clicked = True
                         self.button_name = self.side_button.name
                         self.button_value = self.side_button.value
@@ -222,7 +256,10 @@ class TowerDefenseGame:
                     run = False
             if not(self.paused):
                 for t in self.towers:
-                    self.budget += t.attack(self.enemies)
+                    profit = t.attack(self.enemies)
+                    self.budget += profit
+                    if profit > 0:
+                        coins_sound.play()
 
             for st in self.support_towers:
                 st.increase_range(self.towers)
@@ -255,6 +292,8 @@ class TowerDefenseGame:
         self.menu.draw(self.win)
 
         self.pause_button.draw(self.win)
+
+        self.mute_music_button.draw(self.win)
 
         if self.side_button_clicked and self.side_button:
             self.drawable = self.side_button.draw_moving_button(self.win, self.pos[0], self.pos[1], self.towers, Enemy().path1)

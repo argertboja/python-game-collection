@@ -125,9 +125,9 @@ class PlayPauseButton(Button):
 
     def draw(self, win):
         if not(self.paused):
-            win.blit(self.play_img, (self.x, self.y))
-        else:
             win.blit(self.pause_img, (self.x, self.y))
+        else:
+            win.blit(self.play_img, (self.x, self.y))
 
 class VerticalMenu(Menu):
     def __init__(self, x, y, bg):
