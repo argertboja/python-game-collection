@@ -16,8 +16,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tower_defense/tower_defense_game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="242" column="95" selection-start-line="242" selection-start-column="95" selection-end-line="242" selection-end-column="95" />
+            <state relative-caret-position="144">
+              <caret line="247" column="110" selection-start-line="247" selection-start-column="110" selection-end-line="247" selection-end-column="110" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -28,8 +28,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tower_defense/enemies/enemy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
+            <state relative-caret-position="510">
               <caret line="34" column="23" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -46,11 +49,23 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tower_defense/towers/archer_tower.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="952">
+              <caret line="64" column="12" selection-start-line="64" selection-start-column="12" selection-end-line="67" selection-end-column="44" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tower_defense/menu/menu.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="86" column="56" lean-forward="true" selection-start-line="86" selection-start-column="56" selection-end-line="86" selection-end-column="56" />
+            <state relative-caret-position="192">
+              <caret line="114" column="19" selection-start-line="114" selection-start-column="19" selection-end-line="114" selection-end-column="19" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -78,6 +93,7 @@
       <find>mov</find>
       <find>lives</find>
       <find>lives</find>
+      <find>archer_tower_img</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -398,16 +414,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tower_defense/towers/archer_tower.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="64" column="12" selection-start-line="64" selection-start-column="12" selection-end-line="67" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tower_defense/towers/village_tower.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -468,10 +474,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tower_defense/enemies/enemy.py">
+    <entry file="file://$PROJECT_DIR$/tower_defense/towers/archer_tower.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="34" column="23" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
+        <state relative-caret-position="952">
+          <caret line="64" column="12" selection-start-line="64" selection-start-column="12" selection-end-line="67" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -487,18 +496,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tower_defense/tower_defense_game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="242" column="95" selection-start-line="242" selection-start-column="95" selection-end-line="242" selection-end-column="95" />
+        <state relative-caret-position="144">
+          <caret line="247" column="110" selection-start-line="247" selection-start-column="110" selection-end-line="247" selection-end-column="110" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tower_defense/enemies/enemy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="34" column="23" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tower_defense/menu/menu.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="86" column="56" lean-forward="true" selection-start-line="86" selection-start-column="56" selection-end-line="86" selection-end-column="56" />
+        <state relative-caret-position="192">
+          <caret line="114" column="19" selection-start-line="114" selection-start-column="19" selection-end-line="114" selection-end-column="19" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>

@@ -15,6 +15,7 @@ from .towers.village_tower import VillageTower
 from .towers.support_towers import RangeTower
 from .menu.menu import VerticalMenu, PlayPauseButton
 from random import randrange
+from .enemies.enemy import Enemy
 
 spear_tower_icon = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\icons", "tw1_icon.png")),(50, 60))
 archer_tower_icon = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\icons", "tw2_icon.png")),(50, 60))
@@ -24,6 +25,10 @@ spear_tower_img = pygame.transform.scale(pygame.image.load(os.path.join("tower_d
 archer_tower_img = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\\towers\\tower2_level1", "1.png")),(120, 141))
 village_tower_img = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\\towers\\tower3_level1", "1.png")),(120, 141))
 support_tower_img = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\\towers\\support_towers", "tower1_level1_damage.png")),(80, 80))
+restricted_spear_tower_img = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\\towers\\tower1_level1", "restricted_t1.png")),(78, 156))
+restricted_archer_tower_img = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\\towers\\tower2_level1", "restricted_1.png")),(120, 141))
+restricted_village_tower_img = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\\towers\\tower3_level1", "restricted_1.png")),(120, 141))
+restricted_support_tower_img = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\\towers\\support_towers", "restricted_tower1_level1_damage.png")),(80, 80))
 play_button = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\icons", "play.png")), (70, 60))
 pause_button = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\icons", "pause.png")), (70, 60))
 
@@ -35,17 +40,17 @@ class TowerDefenseGame:
         self.height = 600
         self.win = pygame.display.set_mode((self.width, self.height))
         self.enemies = []
-        self.towers = [SpearTower(80, 300), SpearTower(250, 300), ArcherTower(300, 300), VillageTower(500, 300)]
+        self.towers = [VillageTower(500, 300)]
         self.support_towers = [RangeTower(140, 380)]
         self.lives = 8
         self.budget = 5000
         self.menu_bg = pygame.transform.rotate(
                         pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "bg.png")), (450, 100)), 90)
         self.menu = VerticalMenu(self.width - 100, 100, self.menu_bg)
-        self.menu.add_button(village_tower_img, village_tower_icon, "village_tower_button", 500)
-        self.menu.add_button(archer_tower_img, archer_tower_icon, "archer_tower_button", 800)
-        self.menu.add_button(spear_tower_img, spear_tower_icon, "spear_tower_button", 1000)
-        self.menu.add_button(support_tower_img, support_tower_icon, "support_tower_button", 500)
+        self.menu.add_button(village_tower_img, restricted_village_tower_img, village_tower_icon, "village_tower_button", 500)
+        self.menu.add_button(archer_tower_img, restricted_archer_tower_img, archer_tower_icon, "archer_tower_button", 800)
+        self.menu.add_button(spear_tower_img, restricted_spear_tower_img, spear_tower_icon, "spear_tower_button", 1000)
+        self.menu.add_button(support_tower_img, restricted_support_tower_img, support_tower_icon, "support_tower_button", 500)
         self.bg_img = pygame.image.load(os.path.join("tower_defense\imgs\maps", "Game_Map_1.jpg"))
         self.heart_img = None
         self.heart_imgs = []
@@ -240,7 +245,7 @@ class TowerDefenseGame:
         self.pause_button.draw(self.win)
 
         if self.side_button_clicked and self.side_button:
-            self.side_button.draw_moving_button(self.win, self.pos[0], self.pos[1], self.towers)
+            self.side_button.draw_moving_button(self.win, self.pos[0], self.pos[1], self.towers, Enemy().path1)
 
 
         pygame.init()

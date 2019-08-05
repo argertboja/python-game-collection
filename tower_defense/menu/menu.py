@@ -1,5 +1,6 @@
 import pygame
 import os
+import math
 
 star_img = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "star.png")),(16, 16))
 
@@ -73,29 +74,41 @@ class Menu:
         self.item_cost = item_cost
 
 class VerticalButton(Button):
-    def __init__(self, x, y, real_img, img, name, value):
+    def __init__(self, x, y, real_img, restricted_img, img, name, value):
         super().__init__(x, y, img, name)
         self.value = value
         self.real_img = real_img
+        self.restricted_img = restricted_img
 
     def draw(self, win):
         win.blit(self.img, (self.x, self.y))
 
-    def draw_moving_button(self, win, x, y, towers):
-        """
-        need to be worked upon
-        :param win:
-        :param x:
-        :param y:
-        :param towers:
-        :return:
-        """
+    def draw_moving_button(self, win, x, y, towers, path):
+        tower_collision = self.check_collision_with_tower(x, y, towers)
+        path_collision = self.check_collision_with_path(x, y, path)
 
+        if tower_collision or path_collision:
+            win.blit(self.restricted_img,
+                     (x - self.restricted_img.get_width() / 2, y - self.restricted_img.get_height() / 2))
+        else:
+            win.blit(self.real_img, (x - self.real_img.get_width() / 2, y - self.real_img.get_height() / 2))
+
+
+    def check_collision_with_tower(self, x, y, towers):
         for tower in towers:
-            if x >= tower.x and x <= tower.x + tower.width:
-                if y >= tower.y and y <= tower.y + tower.height:
-                    print("inside")
-        win.blit(self.real_img, (x - self.real_img.get_width()/2, y - self.real_img.get_height()/2))
+            dis = math.sqrt((x-tower.x - tower.img.get_width() / 2)**2 + (y-tower.y - tower.img.get_height() / 2)**2)
+            if dis < 90:
+                return True
+        return False
+
+    def check_collision_with_path(self, x, y, path):
+        for position in path:
+            print(position)
+            dis = math.sqrt((x-position[0])**2 + (y-position[1])**2)
+            if dis < 55:
+                return True
+        return False
+
 
 class PlayPauseButton(Button):
     def __init__(self, x, y, img, play_img, pause_img):
@@ -123,10 +136,10 @@ class VerticalMenu(Menu):
             win.blit(star_img, (button.x + 40, button.y + 62))
 
 
-    def add_button(self, real_img, img, name, value):
+    def add_button(self, real_img, restricted_img, img, name, value):
         button_x = self.x + 27
         button_y = self.y + 50 + self.items*90
-        button = VerticalButton(button_x, button_y, real_img, img, name, value)
+        button = VerticalButton(button_x, button_y, real_img, restricted_img, img, name, value)
         self.buttons.append(button)
         self.items += 1
 
