@@ -87,11 +87,17 @@ class VerticalButton(Button):
         tower_collision = self.check_collision_with_tower(x, y, towers)
         path_collision = self.check_collision_with_path(x, y, path)
 
+        return_value = True
+
         if tower_collision or path_collision:
             win.blit(self.restricted_img,
                      (x - self.restricted_img.get_width() / 2, y - self.restricted_img.get_height() / 2))
+            return_value = False
         else:
             win.blit(self.real_img, (x - self.real_img.get_width() / 2, y - self.real_img.get_height() / 2))
+            return_value = True
+
+        return  return_value
 
 
     def check_collision_with_tower(self, x, y, towers):

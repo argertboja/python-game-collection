@@ -32,6 +32,9 @@ restricted_support_tower_img = pygame.transform.scale(pygame.image.load(os.path.
 play_button = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\icons", "play.png")), (70, 60))
 pause_button = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\icons", "pause.png")), (70, 60))
 
+pygame.init()
+
+pygame.mixer.music.load(os.path.join("tower_defense\sounds", "bg_music.mp3"))
 
 class TowerDefenseGame:
 
@@ -90,7 +93,12 @@ class TowerDefenseGame:
         self.pause_button = PlayPauseButton(10, self.height - 70, play_button, play_button, pause_button)
         self.paused = False
 
+        self.drawable = True
+
     def run(self):
+
+        pygame.mixer.music.play(1)
+
         run = True
 
         clock = pygame.time.Clock()
@@ -177,19 +185,20 @@ class TowerDefenseGame:
 
                     if self.side_button_clicked:
                         self.side_button_clicked = False
-                        if self.button_name == "village_tower_button" and self.budget >= self.button_value:
-                            self.towers.append(VillageTower(self.pos[0] - 60, self.pos[1] - 70))
-                            self.budget -= self.button_value
-                        elif self.button_name == "archer_tower_button" and self.budget >= self.button_value:
-                            self.towers.append(ArcherTower(self.pos[0] - 60, self.pos[1] - 70))
-                            self.budget -= self.button_value
-                        elif self.button_name == "spear_tower_button" and self.budget >= self.button_value:
-                            self.towers.append(SpearTower(self.pos[0] - 39, self.pos[1] - 78))
-                            self.budget -= self.button_value
-                        elif self.button_name == "support_tower_button" and self.budget >= self.button_value:
-                            self.support_towers.append(RangeTower(self.pos[0] - 40, self.pos[1] - 40))
-                            self.budget -= self.button_value
-                        self.side_button = None
+                        if self.drawable:
+                            if self.button_name == "village_tower_button" and self.budget >= self.button_value:
+                                self.towers.append(VillageTower(self.pos[0] - 60, self.pos[1] - 70))
+                                self.budget -= self.button_value
+                            elif self.button_name == "archer_tower_button" and self.budget >= self.button_value:
+                                self.towers.append(ArcherTower(self.pos[0] - 60, self.pos[1] - 70))
+                                self.budget -= self.button_value
+                            elif self.button_name == "spear_tower_button" and self.budget >= self.button_value:
+                                self.towers.append(SpearTower(self.pos[0] - 39, self.pos[1] - 78))
+                                self.budget -= self.button_value
+                            elif self.button_name == "support_tower_button" and self.budget >= self.button_value:
+                                self.support_towers.append(RangeTower(self.pos[0] - 40, self.pos[1] - 40))
+                                self.budget -= self.button_value
+                            self.side_button = None
 
                     if self.side_button and not(self.side_button_clicked):
                         self.side_button_clicked = True
@@ -240,12 +249,15 @@ class TowerDefenseGame:
         self.draw_heart()
         self.draw_star()
 
+        if self.selected_tower:
+            self.selected_tower.draw(self.win, paused)
+
         self.menu.draw(self.win)
 
         self.pause_button.draw(self.win)
 
         if self.side_button_clicked and self.side_button:
-            self.side_button.draw_moving_button(self.win, self.pos[0], self.pos[1], self.towers, Enemy().path1)
+            self.drawable = self.side_button.draw_moving_button(self.win, self.pos[0], self.pos[1], self.towers, Enemy().path1)
 
 
         pygame.init()
