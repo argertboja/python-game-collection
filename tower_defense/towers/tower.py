@@ -33,9 +33,10 @@ class Tower:
         :param y_pos: int
         :return: bool
         """
-        if x_pos >= self.x and x_pos <= (self.x + self.img.get_width()):
-            if y_pos >= self.y and y_pos <= (self.y + self.img.get_height()):
-                return True
+        if self.img is not None:
+            if x_pos >= self.x and x_pos <= (self.x + self.img.get_width()):
+                if y_pos >= self.y and y_pos <= (self.y + self.img.get_height()):
+                    return True
 
         return False
 
