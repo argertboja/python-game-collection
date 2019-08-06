@@ -32,6 +32,11 @@ archer_tower_icon = pygame.transform.scale(pygame.image.load(os.path.join("tower
 village_tower_icon = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\icons", "tw3_icon.png")),(50, 60))
 support_tower_icon = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\icons", "tw4_icon.png")),(50, 60))
 you_lost_menu = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "you_lost.png")),(500, 300))
+start_game_menu = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "start_game.png")),(500, 366))
+start_game_menu_yes = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "start_game_yes.png")),(500, 366))
+start_game_menu_no = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "start_game_no.png")),(500, 366))
+yes_button = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "yes_button.png")),(500, 366))
+no_button = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "no.png")),(500, 366))
 
 # tower images while dragging
 spear_tower_img = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\\towers\\tower1_level1", "t1.png")),(78, 156))
@@ -68,6 +73,62 @@ pygame.mixer.music.set_volume(0.5)
 button_sound = pygame.mixer.Sound(os.path.join("tower_defense\sounds", "button-16.wav"))
 coins_sound = pygame.mixer.Sound(os.path.join("tower_defense\sounds", "button-16.wav"))
 
+# Button class for adding new buttons in the main menu
+class Button:
+    # initialization for button
+    def __init__(self, x, y, img, hover_img, name):
+        """
+        Button initialization method
+        :param x: x position of button
+        :param y: y position of button
+        :param img: main image
+        :param hover_img: hover image
+        """
+        self.x = x
+        self.y = y
+        self.img = img
+        self.original_img = img
+        self.hover_img = hover_img
+        self.width = self.height = 0
+        if self.img is not None:
+            self.width = self.img.get_width()
+            self.height = self.img.get_height()
+        self.name = name
+
+    def click(self, x, y):
+        """
+        This method returns true if button is clicked
+        :param x: mouse x position
+        :param y: mouse y position
+        :return: bool
+        """
+        if self.x <= x <= self.x + self.width:
+            if self.y <= y <= self.y + self.height:
+                return True
+
+        return False
+
+    def mouse_hover(self, x, y):
+        """
+        This method changes the image of button on mouse hover
+        :param x:
+        :param y:
+        :return:
+        """
+        if self.click(x, y):
+            self.img = self.hover_img
+        else:
+            self.img = self.original_img
+
+
+    def draw(self, win):
+        """
+        This method draws button
+        :param win: surface
+        :return: none
+        """
+        win.blit(self.img, (self.x, self.y))
+
 class TowerDefenseGame:
 
     def __init__(self):
@@ -103,6 +164,10 @@ class TowerDefenseGame:
         self.side_button_clicked = False
         self.button_name = ""
         self.button_value = 0
+
+        # start game buttons
+        self.yes_button = None
+        self.no_button = None
 
         # map image
         self.bg_img = bg_img
@@ -142,7 +207,7 @@ class TowerDefenseGame:
         self.mute_music_button = PlayPauseButton(85, self.height - 60, play_music_button, mute_music_button, play_music_button)
 
         # pause game toggle
-        self.paused = False
+        self.paused = True
 
         # drawable toggle for new tower
         self.drawable = True
@@ -150,6 +215,9 @@ class TowerDefenseGame:
         # sound toggles
         self.mute_sounds = False
         self.mute_music = False
+
+        # start game toggle
+        self.start = True
 
     def run(self):
         # play music in case music is not mutted
@@ -166,6 +234,13 @@ class TowerDefenseGame:
                 pygame.mixer.music.pause()
             else:
                 pygame.mixer.music.unpause()
+
+            # start game menu
+            if self.start == True:
+                self.win.blit(start_game_menu, (250, 150))
+                self.yes_button = Button(93, 285, yes_button, yes_button, "yes")
+                self.no_button = Button(271, 285, no_button, no_button, "no")
+                time.sleep(10)
 
             # generate enemies in different intervals
             if time.time() - self.timer >= random.randrange(1,4):
