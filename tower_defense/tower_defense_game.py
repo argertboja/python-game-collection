@@ -149,7 +149,7 @@ class TowerDefenseGame:
         self.wave_turn = 0
         self.towers = []
         self.support_towers = []
-        self.lives = 888
+        self.lives = 8
         self.budget = 1000
         self.menu_bg = menu_bg
 
@@ -202,7 +202,7 @@ class TowerDefenseGame:
         self.selected_tower = None
 
         # low buttons
-        self.pause_button = PlayPauseButton(10, self.height - 70, play_button, play_button, pause_button)
+        self.pause_button = PlayPauseButton(10, self.height - 70, pause_button, play_button, pause_button)
         self.mute_music_button = PlayPauseButton(85, self.height - 60, play_music_button, mute_music_button, play_music_button)
 
         # pause game toggle
@@ -454,7 +454,7 @@ class TowerDefenseGame:
 
         # draw support towers
         for st in self.support_towers:
-            st.draw(self.win)
+            st.draw(self.win, paused)
 
         # draw texts for lives and budget
         text = self.font.render(str(self.lives), 1, (255,255,255))
@@ -477,7 +477,7 @@ class TowerDefenseGame:
 
         # check if new tower is in restricted area
         if self.side_button_clicked and self.side_button:
-            self.drawable = self.side_button.draw_moving_button(self.win, self.pos[0], self.pos[1], self.towers, self.restricted)
+            self.drawable = self.side_button.draw_moving_button(self.win, self.pos[0], self.pos[1], self.towers, self.support_towers, self.restricted)
 
         # draw initial menu
         if start:

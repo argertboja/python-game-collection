@@ -1,8 +1,16 @@
+"""
+@author: Argert Boja
+@org: ABEnt
+@date: May 2019
+@description: Archer tower class
+"""
+
+# import packages
 import pygame
 import os
-import math
 from .tower import Tower
 
+# load images
 upgrade_img = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "upgrade.png")),(32, 32))
 sell_img = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "sell.png")),(32, 32))
 
@@ -14,7 +22,7 @@ class ArcherTower(Tower):
         self.imgs_level1 = []
         self.imgs_level2 = []
         self.imgs_level3 = []
-        self.range = 100
+        self.range = 158
         self.in_range = False
         self.flipped = False
         self.damage = 2
@@ -44,19 +52,21 @@ class ArcherTower(Tower):
         elif self.level == 3:
             self.imgs = self.imgs_level3[:]
 
-    def change_range(self, new_range):
-        """
-        Change the shoting range of a tower
-        :param new_range:
-        :return:
-        """
-        self.range = new_range
-
     def attack(self, enemies):
-        return super().attack(enemies, self.range, self.in_range, self.damage)
+        """
+        Attack enemies in given attack image number
+        :param enemies: enemies
+        :return: bool
+        """
+        return super().attack(enemies, self.range, self.in_range, self.damage, 16)
 
     def draw(self, win, paused):
-
+        """
+        Draw tower images
+        :param win: Surface
+        :param paused: paused toggle
+        :return: None
+        """
         self.img = self.imgs[self.animation_count // 4]
 
         if self.in_range == False:
@@ -66,9 +76,6 @@ class ArcherTower(Tower):
                 self.animation_count += 1
                 if self.animation_count >= len(self.imgs) * 4:
                     self.animation_count = 0
-
-        #pygame.draw.circle(win, (255,0,0), (int(self.x +
-        #                   (self.img.get_width() / 2)), int(self.y + (self.img.get_height() / 2))), self.range, 1)
         surface = pygame.Surface((self.range * 4, self.range * 4), pygame.SRCALPHA, 32)
         pygame.draw.circle(surface, (120, 120, 120, 100),
                            (self.range, self.range),
@@ -79,8 +86,11 @@ class ArcherTower(Tower):
             self.menu.draw(win)
         win.blit(self.img, (self.x, self.y))
 
-
     def upgrade(self):
+        """
+        Upgrade tower level
+        :return: None
+        """
         if self.level < 3:
             self.level += 1
             self.damage += 1

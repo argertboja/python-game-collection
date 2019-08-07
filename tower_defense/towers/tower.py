@@ -1,9 +1,18 @@
+"""
+@author: Argert Boja
+@org: ABEnt
+@date: May 2019
+@description: parent class for all towers which will be created
+"""
+
+# import packages
 import pygame
 import math
 import time
 import os
 from tower_defense.menu.menu import Menu
 
+# load tower menu image
 menu_bg = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "bg.png")),(160, 50))
 
 class Tower:
@@ -40,32 +49,7 @@ class Tower:
 
         return False
 
-    def sell(self):
-        """
-        returns the price of tower
-        :return: int
-        """
-        return self.buy_costs[self.level-1]
-
-
-    def get_uprade_cost(self):
-        """
-        returns the upgrade cost, and if 0 then cannot upgrade
-        :return: int
-        """
-        return self.upgrade_price[self.level - 1]
-
-    def move(self, x, y):
-        """
-        Moves the postion of the tower
-        :param x: new x pos
-        :param y: new y pos
-        :return: none
-        """
-        self.x = x
-        self.y = y
-
-    def attack(self, enemies, range, inRange, damage):
+    def attack(self, enemies, range, inRange, damage, hit_image_count):
         """
         Decides whether the tower should start attacking
         :param enemies: list of enemies
@@ -83,21 +67,8 @@ class Tower:
         closest_enemies.sort(key=lambda x: x.x)
         if len(closest_enemies) > 0:
             closest_enemy = closest_enemies[0]
-            if time.time() - self.timer >= 0.5:
-                self.timer = time.time()
+            if self.animation_count == hit_image_count:
                 if closest_enemy.hit(damage):
                     enemies.remove(closest_enemy)
                     return closest_enemy.max_health
-
-        """
-        This piece of code is used for archer towers in order to flip the archer
-        if closest_enemy.x > self.x and not (self.flipped):
-            self.flipped = True
-            for x, img in enumerate(self.imgs):
-                self.imgs[x] = pygame.transform.flip(img, True, False)
-        elif closest_enemy.x < self.x and self.flipped:
-            self.flipped = False
-            for x, img in enumerate(self.imgs):
-                self.imgs[x] = pygame.transform.flip(img, True, False)
-        """
         return 0
