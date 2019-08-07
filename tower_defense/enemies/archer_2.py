@@ -1,7 +1,14 @@
+"""
+@author: Argert Boja
+@org: ABEnt
+@date: May 2019
+@description: Archer 2 Enemy type
+"""
 import pygame
 import os
 from .enemy import Enemy
 
+# load images
 imgs = []
 for x in range(1, 12):
     str_to_add = str(x)
@@ -15,7 +22,7 @@ class Archer_2(Enemy):
 
     def __init__(self):
         super().__init__()
-        self.max_health = 20
+        self.max_health = 4
         self.health = self.max_health
         self.imgs = imgs[:]
 

@@ -23,7 +23,6 @@ from .towers.archer_tower import ArcherTower
 from .towers.village_tower import VillageTower
 from .towers.support_towers import RangeTower
 from .menu.menu import VerticalMenu, PlayPauseButton
-from .enemies.enemy import Enemy
 
 # load images
 # tower icons on menu
