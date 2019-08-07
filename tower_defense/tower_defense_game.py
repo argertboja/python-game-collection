@@ -35,8 +35,8 @@ you_lost_menu = pygame.transform.scale(pygame.image.load(os.path.join("tower_def
 start_game_menu = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "start_game.png")),(500, 366))
 start_game_menu_yes = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "start_game_yes.png")),(500, 366))
 start_game_menu_no = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "start_game_no.png")),(500, 366))
-yes_button = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "yes_button.png")),(500, 366))
-no_button = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "no.png")),(500, 366))
+yes_button = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "yes_button.png")),(138, 63))
+no_button = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "no.png")),(138, 63))
 
 # tower images while dragging
 spear_tower_img = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\\towers\\tower1_level1", "t1.png")),(78, 156))
@@ -235,13 +235,6 @@ class TowerDefenseGame:
             else:
                 pygame.mixer.music.unpause()
 
-            # start game menu
-            if self.start == True:
-                self.win.blit(start_game_menu, (250, 150))
-                self.yes_button = Button(93, 285, yes_button, yes_button, "yes")
-                self.no_button = Button(271, 285, no_button, no_button, "no")
-                time.sleep(10)
-
             # generate enemies in different intervals
             if time.time() - self.timer >= random.randrange(1,4):
                 self.timer = time.time()
@@ -279,6 +272,14 @@ class TowerDefenseGame:
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     self.clicks.append(self.pos)
                     print(self.clicks)
+
+                    # starting game buttons
+                    if self.yes_button.click(self.pos[0], self.pos[1]):
+                        self.start = False
+                        self.paused = False
+                    elif self.no_button.click(self.pos[0], self.pos[1]):
+                        self.start = False
+                        run = False
 
                     # pause button
                     if self.pause_button.click(self.pos[0], self.pos[1]):
@@ -376,30 +377,30 @@ class TowerDefenseGame:
                         self.button_name = self.side_button.name
                         self.button_value = self.side_button.value
 
-            # delete enemies that go off screen and reduce life number
-            for enemy in self.enemies:
-                if enemy.x2 < -8:
-                    self.enemies.remove(enemy)
-                    self.lives -= 1
-                    if self.lives <= 0:
-                        print("You lost!")
-                        run = False
+                # delete enemies that go off screen and reduce life number
+                for enemy in self.enemies:
+                    if enemy.x2 < -8:
+                        self.enemies.remove(enemy)
+                        self.lives -= 1
+                        if self.lives <= 0:
+                            print("You lost!")
+                            run = False
 
-            # attack if game is not paused and enemies are in the range
-            if not(self.paused):
-                for t in self.towers:
-                    # increase budget for every killed enemy
-                    profit = t.attack(self.enemies)
-                    self.budget += profit
-                    if profit > 0:
-                        coins_sound.play()
+                # attack if game is not paused and enemies are in the range
+                if not(self.paused):
+                    for t in self.towers:
+                        # increase budget for every killed enemy
+                        profit = t.attack(self.enemies)
+                        self.budget += profit
+                        if profit > 0:
+                            coins_sound.play()
 
-            # link support towers with attack towers
-            for st in self.support_towers:
-                st.increase_range(self.towers)
+                # link support towers with attack towers
+                for st in self.support_towers:
+                    st.increase_range(self.towers)
 
             # draw all images
-            self.draw(self.paused)
+            self.draw(self.paused, self.start, self.pos[0], self.pos[1])
 
         # quit game if lost
         self.win.blit(you_lost_menu, (250, 150))
@@ -407,7 +408,7 @@ class TowerDefenseGame:
         time.sleep(2)
         pygame.quit()
 
-    def draw(self, paused):
+    def draw(self, paused, start, mouse_x, mouse_y):
         """
         Method for drawing all images and animations
         :param paused: boolean which checks whether game is paused or not
@@ -454,6 +455,16 @@ class TowerDefenseGame:
         # check if new tower is in restricted area
         if self.side_button_clicked and self.side_button:
             self.drawable = self.side_button.draw_moving_button(self.win, self.pos[0], self.pos[1], self.towers, Enemy().path1)
+
+        # draw initial menu
+        if start:
+            self.win.blit(start_game_menu, (250, 150))
+            self.yes_button = Button(343, 435, yes_button, yes_button, "yes")
+            self.no_button = Button(521, 435, no_button, no_button, "no")
+            if self.yes_button.click(mouse_x, mouse_y):
+                self.win.blit(start_game_menu_yes, (250, 150))
+            if self.no_button.click(mouse_x, mouse_y):
+                self.win.blit(start_game_menu_no, (250, 150))
 
         pygame.display.update()
 
