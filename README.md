@@ -62,8 +62,6 @@
 
 ## Support
 
-Reach out to me at one of the following places!
-
 - Linkedin at <a href="https://www.linkedin.com/in/argert-boja-09374b121" target="_blank">`Argert Boja`</a>
 
 ---
