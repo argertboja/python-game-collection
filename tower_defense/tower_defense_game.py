@@ -150,7 +150,7 @@ class TowerDefenseGame:
         self.wave_turn = 0
         self.towers = []
         self.support_towers = []
-        self.lives = 8
+        self.lives = 888
         self.budget = 1000
         self.menu_bg = menu_bg
 
@@ -191,7 +191,7 @@ class TowerDefenseGame:
 
         self.pos = [0,0]
 
-        self.clicks = [] # to be removed
+        # self.clicks = [] # used for adding restricted areas
 
         # initialize timer
         self.timer = time.time()
@@ -218,6 +218,24 @@ class TowerDefenseGame:
 
         # start game toggle
         self.start = True
+        self.restart = False
+
+        # restricted areas
+        self.restricted = [ (23, 89), (74, 95), (111, 96), (161, 93), (202, 77), (233, 77), (266, 81), (291, 114), (328, 106),
+                           (374, 84), (409, 57), (433, 18), (388, 13), (332, 12), (287, 12), (233, 12), (183, 11), (140, 12), (82, 10),
+                           (16, 13), (18, 48), (68, 45), (117, 43), (145, 43), (185, 43), (228, 43), (263, 46), (311, 49), (359, 46),
+                           (394, 37), (539, 132), (527, 169), (531, 218), (548, 255), (568, 285), (607, 293), (634, 272), (634, 235), (617, 197),
+                           (601, 177), (567, 152), (573, 192), (582, 255), (609, 254), (586, 223), (533, 84), (522, 53), (541, 37), (558, 62),
+                           (166, 590), (211, 560), (240, 535), (271, 504), (312, 460), (262, 459), (227, 461), (200, 482), (168, 512), (158, 536),
+                           (208, 523), (239, 492), (884, 174), (860, 164), (845, 121), (850, 80), (885, 55), (911, 36), (934, 47), (953, 83),
+                           (961, 108), (912, 90), (889, 112), (903, 176), (878, 140), (827, 106), (858, 62), (25, 373), (54, 370), (85, 352),
+                           (114, 330), (143, 306), (182, 285), (217, 267), (249, 264), (287, 263), (321, 277), (343, 294), (370, 319), (391, 346),
+                           (410, 364), (430, 386), (456, 408), (479, 426), (506, 442), (526, 451), (23, 371), (67, 363), (97, 342), (97, 342),
+                            (135, 313), (174, 284), (214, 269), (262, 261), (315, 262), (336, 289), (372, 325), (402, 358), (430, 384), (463, 415),
+                            (495, 438), (530, 459), (571, 470), (622, 463), (672, 459), (720, 450), (764, 436), (788, 403), (814, 356), (831, 312),
+                            (850, 265), (809, 233), (778, 187), (768, 145), (755, 94), (730, 48), (707, 12), (886, 252), (769, 484), (811, 506),
+                            (848, 515), (887, 541), (925, 562), (962, 580), (544, 510), (525, 536), (507, 560), (465, 563), (410, 570), (371, 585),
+                            (539, 584)]
 
     def run(self):
         # play music in case music is not mutted
@@ -267,19 +285,25 @@ class TowerDefenseGame:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     run = False
+                    self.start = False
                 # get mouse position
                 self.pos = pygame.mouse.get_pos()
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    self.clicks.append(self.pos)
-                    print(self.clicks)
+                    # self.clicks.append(self.pos) # used to add new point in restricted areas
+                     # print(self.clicks)
 
                     # starting game buttons
-                    if self.yes_button.click(self.pos[0], self.pos[1]):
+                    if self.yes_button is not None and self.yes_button.click(self.pos[0], self.pos[1]):
                         self.start = False
                         self.paused = False
-                    elif self.no_button.click(self.pos[0], self.pos[1]):
+                        self.yes_button = None
+                        self.no_button = None
+                    elif self.no_button is not None and self.no_button.click(self.pos[0], self.pos[1]):
                         self.start = False
+                        self.restart = False
                         run = False
+                        self.yes_button = None
+                        self.no_button = None
 
                     # pause button
                     if self.pause_button.click(self.pos[0], self.pos[1]):
@@ -377,27 +401,26 @@ class TowerDefenseGame:
                         self.button_name = self.side_button.name
                         self.button_value = self.side_button.value
 
-                # delete enemies that go off screen and reduce life number
-                for enemy in self.enemies:
-                    if enemy.x2 < -8:
-                        self.enemies.remove(enemy)
-                        self.lives -= 1
-                        if self.lives <= 0:
-                            print("You lost!")
-                            run = False
+            # delete enemies that go off screen and reduce life number
+            for enemy in self.enemies:
+                if enemy.x2 < -8:
+                    self.enemies.remove(enemy)
+                    self.lives -= 1
+                    if self.lives <= 0:
+                        self.reset_game()
 
-                # attack if game is not paused and enemies are in the range
-                if not(self.paused):
-                    for t in self.towers:
-                        # increase budget for every killed enemy
-                        profit = t.attack(self.enemies)
-                        self.budget += profit
-                        if profit > 0:
-                            coins_sound.play()
+            # attack if game is not paused and enemies are in the range
+            if not(self.paused):
+                for t in self.towers:
+                    # increase budget for every killed enemy
+                    profit = t.attack(self.enemies)
+                    self.budget += profit
+                    if profit > 0:
+                        coins_sound.play()
 
-                # link support towers with attack towers
-                for st in self.support_towers:
-                    st.increase_range(self.towers)
+            # link support towers with attack towers
+            for st in self.support_towers:
+                st.increase_range(self.towers)
 
             # draw all images
             self.draw(self.paused, self.start, self.pos[0], self.pos[1])
@@ -406,7 +429,8 @@ class TowerDefenseGame:
         self.win.blit(you_lost_menu, (250, 150))
         pygame.display.update()
         time.sleep(2)
-        pygame.quit()
+        if not (self.restart):
+            pygame.quit()
 
     def draw(self, paused, start, mouse_x, mouse_y):
         """
@@ -418,8 +442,8 @@ class TowerDefenseGame:
         self.win.blit(self.bg_img, (0,0))
 
         # draw path or restricted areas points
-        # for c in path:
-          #  pygame.draw.circle(self.win, (255, 0, 0), (c[0], c[1]), 5, 0)
+        # for c in self.clicks:
+          # pygame.draw.circle(self.win, (255, 0, 0), (c[0], c[1]), 5, 0)
 
         # draw enemies
         for enemy in self.enemies:
@@ -454,7 +478,7 @@ class TowerDefenseGame:
 
         # check if new tower is in restricted area
         if self.side_button_clicked and self.side_button:
-            self.drawable = self.side_button.draw_moving_button(self.win, self.pos[0], self.pos[1], self.towers, Enemy().path1)
+            self.drawable = self.side_button.draw_moving_button(self.win, self.pos[0], self.pos[1], self.towers, self.restricted)
 
         # draw initial menu
         if start:
@@ -493,3 +517,17 @@ class TowerDefenseGame:
             self.star_animation_count = 0
 
         self.win.blit(self.star_img, (self.width-60, 50))
+
+    def reset_game(self):
+        """
+        This method is used to reset all game values
+        :return: None
+        """
+        self.start = True
+        self.paused = True
+        self.wave_turn = 0
+        self.enemies = []
+        self.towers = []
+        self.support_towers = []
+        self.budget = 1000
+        self.lives = 8

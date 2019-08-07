@@ -98,6 +98,7 @@ class Main:
         self.buttons = []
         self.buttons.append(Button(200, 200, td_icon, td_icon_hover, "tower_defense"))
         self.quitting = False
+        self.exit = False
         self.yes_button = None
         self.no_button = None
 
@@ -109,7 +110,8 @@ class Main:
         run = True
         while run:
             # Get mouse position
-            mouse_x, mouse_y = pygame.mouse.get_pos()
+            if not(self.exit):
+                mouse_x, mouse_y = pygame.mouse.get_pos()
 
             # Check events
             for event in pygame.event.get():
@@ -121,22 +123,28 @@ class Main:
                     for button in self.buttons:
                         if button.click(mouse_x, mouse_y):
                             if button.name == "tower_defense":
+                                self.exit = True
+                                self.yes_button = None
+                                self.no_button = None
                                 game = TowerDefenseGame()
                                 game.run()
-                    if self.yes_button.click(mouse_x, mouse_y):
+                                run = False
+                    if self.yes_button is not None and self.yes_button.click(mouse_x, mouse_y):
                         run = False
 
-                    if self.no_button.click(mouse_x, mouse_y):
+                    if self.no_button is not None and self.no_button.click(mouse_x, mouse_y):
                         self.quitting = False
-
-            # draw images
-            self.draw()
+            if not(self.exit):
+                # draw images
+                self.draw()
 
             # draw quitting confirmation menu
-            if (self.quitting):
+            if self.quitting and not (self.exit):
                 self.draw_confirmation_menu(360, 300, mouse_x, mouse_y)
 
-            pygame.display.update()
+            if not(self.exit):
+                pygame.display.update()
+        pygame.quit()
 
     def draw(self):
         """
@@ -145,7 +153,10 @@ class Main:
         """
 
         # Draw background
-        self.win.blit(self.bg, (0,0))
+        try:
+            self.win.blit(self.bg, (0,0))
+        except:
+            print("exeption")
 
         # Get mouse position
         mouse_x, mouse_y = pygame.mouse.get_pos()
