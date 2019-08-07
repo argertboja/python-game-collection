@@ -63,7 +63,6 @@ class Button:
         if self.x <= x <= self.x + self.width:
             if self.y <= y <= self.y + self.height:
                 return True
-
         return False
 
     def mouse_hover(self, x, y):
