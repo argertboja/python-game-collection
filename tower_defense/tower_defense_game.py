@@ -278,7 +278,7 @@ class TowerDefenseGame:
                                 self.enemies.append(Ninja())
                             elif enemy_index == 4:
                                 self.enemies.append(Knight())
-            clock.tick(150)
+            clock.tick(200)
 
             # get events
             for event in pygame.event.get():

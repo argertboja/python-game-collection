@@ -79,11 +79,11 @@ class VillageTower(Tower):
                 if self.animation_count >= len(self.imgs) * 4:
                     self.animation_count = 0
 
-        surface = pygame.Surface((self.range * 4, self.range * 4), pygame.SRCALPHA, 32)
-        pygame.draw.circle(surface, (120, 120, 120, 100),
-                           (self.range,self.range),
-                           self.range, self.range)
         if self.selected:
+            surface = pygame.Surface((self.range * 4, self.range * 4), pygame.SRCALPHA, 32)
+            pygame.draw.circle(surface, (120, 120, 120, 100),
+                               (self.range, self.range),
+                               self.range, self.range)
             win.blit(surface, (int(self.x + (self.img.get_width() / 2) - self.range), int(self.y + (self.img.get_height() / 2) - self.range)))
             self.menu.draw(win)
         win.blit(self.img, (self.x, self.y))
