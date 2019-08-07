@@ -31,6 +31,7 @@ archer_tower_icon = pygame.transform.scale(pygame.image.load(os.path.join("tower
 village_tower_icon = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\icons", "tw3_icon.png")),(50, 60))
 support_tower_icon = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\icons", "tw4_icon.png")),(50, 60))
 you_lost_menu = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "you_lost.png")),(500, 300))
+you_won_menu = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "you_won.png")),(500, 300))
 start_game_menu = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "start_game.png")),(500, 366))
 start_game_menu_yes = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "start_game_yes.png")),(500, 366))
 start_game_menu_no = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "start_game_no.png")),(500, 366))
@@ -278,6 +279,11 @@ class TowerDefenseGame:
                                 self.enemies.append(Ninja())
                             elif enemy_index == 4:
                                 self.enemies.append(Knight())
+                    else:
+                        self.win.blit(you_won_menu, (250, 150))
+                        self.start = True
+                        self.paused = True
+                        self.reset_game()
             clock.tick(200)
 
             # get events
