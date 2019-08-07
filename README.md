@@ -49,15 +49,6 @@
 
 ---
 
-## Team
-
-> Or Contributors/People
-
-| <a href="https://www.linkedin.com/in/argert-boja-09374b121/" target="_blank">**Argert Boja / ABEnt.**</a> | :---: |:---:| :---:| [![ABEnt.](https://avatars1.githubusercontent.com/u/4284691?v=3&s=200)](https://www.linkedin.com/in/argert-boja-09374b121/)    |
-| <a href="http://github.com/argertboja" target="_blank">`github.com/argertboja`</a> | 
-
----
-
 ## FAQ
 
 - **How do run the game?**
