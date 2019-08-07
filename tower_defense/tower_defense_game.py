@@ -58,7 +58,7 @@ mute_music_button = pygame.transform.scale(pygame.image.load(os.path.join("tower
 
 # icons and backgrounds
 icon = pygame.transform.scale(pygame.image.load(os.path.join("images", "icon.png")),(32,32))
-menu_bg = pygame.transform.rotate(pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "bg.png")), (450, 100)), 90)
+menu_bg = pygame.transform.scale(pygame.image.load(os.path.join("tower_defense\imgs\menu", "vertical_menu_bg.png")), (85, 410))
 bg_img = pygame.image.load(os.path.join("tower_defense\imgs\maps", "Game_Map_1.jpg"))
 
 # initialize pygame
@@ -155,7 +155,7 @@ class TowerDefenseGame:
         self.menu_bg = menu_bg
 
         # initialize side menu and buttons
-        self.menu = VerticalMenu(self.width - 100, 100, self.menu_bg)
+        self.menu = VerticalMenu(self.width - 90, 120, self.menu_bg)
         self.menu.add_button(village_tower_img, restricted_village_tower_img, village_tower_icon, "village_tower_button", 500)
         self.menu.add_button(archer_tower_img, restricted_archer_tower_img, archer_tower_icon, "archer_tower_button", 800)
         self.menu.add_button(spear_tower_img, restricted_spear_tower_img, spear_tower_icon, "spear_tower_button", 1000)

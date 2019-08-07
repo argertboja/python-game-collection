@@ -143,8 +143,8 @@ class VerticalMenu(Menu):
 
 
     def add_button(self, real_img, restricted_img, img, name, value):
-        button_x = self.x + 27
-        button_y = self.y + 50 + self.items*90
+        button_x = self.x + 15
+        button_y = self.y + 35 + self.items*90
         button = VerticalButton(button_x, button_y, real_img, restricted_img, img, name, value)
         self.buttons.append(button)
         self.items += 1
