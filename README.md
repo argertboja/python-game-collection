@@ -51,7 +51,7 @@
 
 ## FAQ
 
-- **How do run the game?**
+- **How do I run the game?**
     - Run the setup and it will install all necessary files.
 - **Do I need to install python to run the game?**
     - No! You can run the game even without installing python.
